@@ -23,6 +23,9 @@
 // French
 //#define LANGUAGE_FR_FR
 
+// German
+//#define LANGUAGE_DE_DE
+
 // Spanish
 //#define LANGUAGE_ES_ES
 
