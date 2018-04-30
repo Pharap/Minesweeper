@@ -1,0 +1,151 @@
+#include "TitleScreenState.h"
+
+/*
+Copyright (C) 2018 Pharap (@Pharap)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+#include "Images.h"
+#include "Languages.h"
+#include "Utils.h"
+
+const TitleScreenState::Option TitleScreenState::Options[] PROGMEM =
+{
+	{ GameStateType::Gameplay, Strings::Play },
+	{ GameStateType::Credits, Strings::Credits },
+	{ GameStateType::Stats, Strings::Stats }
+};
+
+void TitleScreenState::update(StateMachine & machine)
+{
+	constexpr const static uint8_t MinOption = 0;
+	constexpr const static uint8_t OptionCount = ArrayLength(Options);
+	constexpr const static uint8_t MaxOption = (MinOption + OptionCount) - 1;
+
+	auto & arduboy = machine.getContext().arduboy;
+	
+	if (!this->mineChangeMode)
+	{
+		if (arduboy.justPressed(Arduboy::ButtonUp))
+		{
+			if (this->option > MinOption)
+				--this->option;
+		}
+
+		if (arduboy.justPressed(Arduboy::ButtonDown))
+		{
+			if (this->option < MaxOption)
+				++this->option;
+		}
+
+		if (arduboy.justPressed(Arduboy::ButtonA))
+		{
+			if (arduboy.pressed(Arduboy::ButtonB))
+			{
+				this->mineChangeMode = true;
+			}
+			else
+			{
+				auto state = ProgmemRead(&(Options[this->option].State));
+				machine.changeState(state);
+			}
+		}
+	}
+	else
+	{
+		if (arduboy.justPressed(Arduboy::ButtonUp))
+		{
+			if (Context::mineType > Context::FirstMineType)
+				--Context::mineType;
+		}
+
+		if (arduboy.justPressed(Arduboy::ButtonDown))
+		{
+			if (Context::mineType < Context::LastMineType)
+				++Context::mineType;
+		}
+
+		if (arduboy.justPressed(Arduboy::ButtonA))
+			this->mineChangeMode = false;
+	}
+}
+
+void TitleScreenState::render(StateMachine & machine)
+{
+
+	auto & arduboy = machine.getContext().arduboy;
+
+	// Draw Title
+	Sprites::drawOverwrite(0, 0, Images::Title, 0);
+
+	// Draw options
+	{
+		constexpr const uint8_t maxWidth =
+			MaxValue<uint8_t,
+			StringWidth(Strings::Play),
+			StringWidth(Strings::Credits),
+			StringWidth(Strings::Stats)
+			>();
+
+		constexpr const uint8_t step = FontCharHeight + 2;
+		constexpr const uint8_t x = CalculateCentreX(maxWidth);
+		constexpr const uint8_t yBase = Images::TitleHeight + 4;
+
+		constexpr const static uint8_t MinOption = 0;
+		constexpr const static uint8_t OptionCount = ArrayLength(Options);
+
+		uint8_t y = yBase;
+
+		for (uint8_t i = MinOption; i < OptionCount; ++i, y += step)
+		{
+			arduboy.setCursor(x, y);
+			arduboy.print(AsFlashString(ProgmemRead(&(Options[i].Text))));
+
+			if (this->option == i)
+			{
+				const uint8_t index = (12 + Context::mineType);
+				Sprites::drawOverwrite(x - (2 * FontCharWidth), y, Images::Tiles, index);
+			}
+		}
+	}
+
+	// Draw Mine
+	if(this->mineChangeMode)
+	{
+		constexpr const uint8_t x = Arduboy::ScreenWidth - (Images::LargeTileFrameWidth + 2);
+		constexpr const uint8_t y = Images::TitleHeight + CalculateCentre((Arduboy::ScreenHeight - Images::TitleHeight), Images::LargeTileFrameHeight);
+
+		constexpr const uint8_t arrowX = (x - 4) - Images::ArrowWidth;
+
+		arduboy.fillRect(x - 2, y - 2, Images::LargeTileFrameWidth + 4, Images::LargeTileFrameHeight + 4, Arduboy::ColourBlack);
+		arduboy.drawRect(x - 2, y - 2, Images::LargeTileFrameWidth + 4, Images::LargeTileFrameHeight + 4, Arduboy::ColourWhite);
+		arduboy.fillRect(arrowX - 2, y - 2, Images::ArrowWidth + 4, Images::LargeTileFrameHeight + 4, Arduboy::ColourWhite);
+		arduboy.drawRect(arrowX - 2, y - 2, Images::ArrowWidth + 4, Images::LargeTileFrameHeight + 4, Arduboy::ColourWhite);
+
+		const uint8_t index = (12 + Context::mineType);
+		Sprites::drawOverwrite(x, y, Images::LargeTiles, index);
+
+		if (Context::mineType > Context::FirstMineType)
+		{
+			constexpr const uint8_t arrowY = y;
+			Sprites::drawOverwrite(arrowX, arrowY, Images::Arrows, 0);
+		}
+
+		if (Context::mineType < Context::LastMineType)
+		{
+			constexpr const uint8_t arrowY = y + Images::ArrowHeight;
+			Sprites::drawOverwrite(arrowX, arrowY, Images::Arrows, 1);
+		}
+	}
+}
