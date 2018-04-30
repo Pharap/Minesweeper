@@ -38,11 +38,13 @@ void SaveCheckState::update(StateMachine & machine)
 	{
 		if (option == ConfirmationOption::Yes)
 		{
+			Context::saveCheckEnabled = true;
 			Context::SaveData::clearSave();
 		}
 
 		if (option == ConfirmationOption::No)
 		{
+			Context::saveCheckEnabled = false;
 		}
 
 		machine.changeState(GameStateType::TitleScreen);
