@@ -122,8 +122,8 @@ namespace Strings
 		using namespace Languages::EN::AU;
 	#elif defined(LANGUAGE_FR_FR) || defined(LANGUAGE_FR)
 		using namespace Languages::FR::FR;
-#elif defined(LANGUAGE_DE_DE) || defined(LANGUAGE_DE)
-	using namespace Languages::DE::DE;
+	#elif defined(LANGUAGE_DE_DE) || defined(LANGUAGE_DE)
+		using namespace Languages::DE::DE;
 	#elif defined(LANGUAGE_ES_ES) || defined(LANGUAGE_ES)
 		using namespace Languages::ES::ES;
 	#else
