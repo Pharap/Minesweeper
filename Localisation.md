@@ -10,4 +10,5 @@ This game supports being compiled for multiple languages.
 | EN-AU | EN, AU | English, Australia |
 | FR-FR | FR, FR | French, France     |
 | ES-ES | ES, ES | Spanish, Spain     |
+| DE-DE | DE, DE | German, Germany    |
 
