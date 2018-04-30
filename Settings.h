@@ -7,7 +7,7 @@
 // Set this to `false` to enable the save overwrite warning at the start.
 //
 
-#define DISABLE_SAVE_CHECK true
+#define DISABLE_SAVE_CHECK false
 
 //
 // LANGUAGE
