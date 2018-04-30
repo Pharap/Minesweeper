@@ -18,13 +18,13 @@
 // Normal languages
 
 // English
-//#define LANGUAGE_EN_GB
+#define LANGUAGE_EN_GB
 
 // French
 //#define LANGUAGE_FR_FR
 
 // Spanish
-#define LANGUAGE_ES_ES
+//#define LANGUAGE_ES_ES
 
 // Joke languages
 
