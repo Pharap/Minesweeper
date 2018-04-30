@@ -9,7 +9,7 @@ STRING_STATS("Statistiques")
 STRING_SETTINGS("Pr""\x82""f""\x82""rence")
 
 // Game
-STRING_YOU_WIN("Gagne""\x82")
+STRING_YOU_WIN("Gagn""\x82")
 STRING_YOU_LOSE("Perdu")
 STRING_PLAY_AGAIN("Rejouer?")
 STRING_YES("Oui")
