@@ -59,7 +59,7 @@ void Game::loop(void)
 
 	arduboy.display();
 	
-	if(this->changePending)
+	while(this->changePending)
 	{
 		this->currentState->deactivate(*this);
 
@@ -70,8 +70,8 @@ void Game::loop(void)
 			this->currentStateId = this->nextStateId;
 		}
 
-		this->currentState->activate(*this);
 		this->changePending = false;
+		this->currentState->activate(*this);
 	}
 }
 
