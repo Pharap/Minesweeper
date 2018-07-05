@@ -18,7 +18,7 @@ limitations under the License.
 
 #include "Settings.h"
 #include "SplashscreenState.h"
-#include "TitleScreenState.h"
+#include "TitlescreenState.h"
 #include "GameplayState.h"
 #include "CreditsState.h"
 #include "StatsState.h"

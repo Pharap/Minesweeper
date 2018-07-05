@@ -1,4 +1,4 @@
-#include "SplashScreenState.h"
+#include "SplashscreenState.h"
 
 /*
 Copyright (C) 2018 Pharap (@Pharap)
