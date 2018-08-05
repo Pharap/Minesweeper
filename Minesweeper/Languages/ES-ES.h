@@ -7,6 +7,7 @@ STRING_PLAY("Jugar")
 STRING_CREDITS("Cr""\x82""ditos")
 STRING_STATS("Estad\xA1sticas")
 STRING_SETTINGS("Opciones")
+STRING_THEMES("Estilo")
 
 // Game
 STRING_YOU_WIN("Ganaste")
