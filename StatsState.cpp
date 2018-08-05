@@ -87,8 +87,6 @@ void StatsState::render(StateMachine & machine)
 		arduboy.print(this->stats.wins);
 		
 		y += step;
-
-		y += step;
 		arduboy.setCursor(x, y);
 		arduboy.print(AsFlashString(Strings::Losses));
 		arduboy.print(AsFlashString(Strings::ColonSpace));
