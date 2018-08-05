@@ -7,6 +7,7 @@ STRING_PLAY("Jouer")
 STRING_CREDITS("G""\x82""n""\x82""rique")
 STRING_STATS("Statistiques")
 STRING_SETTINGS("Pr""\x82""f""\x82""rence")
+STRING_THEMES("Themes")
 
 // Game
 STRING_YOU_WIN("Gagn""\x82")

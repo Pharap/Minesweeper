@@ -7,6 +7,7 @@ STRING_PLAY("Gi' us a game")
 STRING_CREDITS("Them wot did it")
 STRING_STATS("'ow'd I do?")
 STRING_SETTINGS("Jiggerypokery")
+STRING_THEMES("arty farty stuff")
 
 // Game
 STRING_YOU_WIN("Yes! Get in!")

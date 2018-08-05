@@ -7,6 +7,7 @@ STRING_PLAY("Spielen")
 STRING_CREDITS("Mitwirkende")
 STRING_STATS("Statistiken")
 STRING_SETTINGS("Einstellungen")
+STRING_THEMES("Designs")
 
 // Game
 STRING_YOU_WIN("Du gewinnst")
