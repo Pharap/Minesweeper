@@ -23,8 +23,9 @@
 const TitleScreenState::Option TitleScreenState::Options[] PROGMEM =
 {
 	{ GameStateType::Gameplay, Strings::Play },
+	{ GameStateType::Themes, Strings::Themes },
 	{ GameStateType::Credits, Strings::Credits },
-	{ GameStateType::Stats, Strings::Stats }
+	{ GameStateType::Stats, Strings::Stats },
 };
 
 void TitleScreenState::update(StateMachine & machine)
