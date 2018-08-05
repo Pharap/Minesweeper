@@ -22,6 +22,7 @@
 #include "GameplayState.h"
 #include "CreditsState.h"
 #include "StatsState.h"
+#include "ThemesState.h"
 #if !DISABLE_SAVE_CHECK
 #include "SaveCheckState.h"
 #endif
@@ -100,6 +101,7 @@ Game::State * Game::createState(const StateId & stateType)
 		case GameStateType::Gameplay: return new GameplayState();
 		case GameStateType::Credits: return new CreditsState();
 		case GameStateType::Stats: return new StatsState();
+		case GameStateType::Themes: return new ThemesState();
 		#if !DISABLE_SAVE_CHECK
 		case GameStateType::SaveCheck: return new SaveCheckState();
 		#endif

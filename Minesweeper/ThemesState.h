@@ -16,19 +16,14 @@
 // limitations under the License.
 //
 
-#include <stdint.h>
+#include "GameContext.h"
 
-#include "Settings.h"
+#include "GameState.h"
+#include "GameStateType.h"
 
-enum class GameStateType : uint8_t
+class ThemesState : public GameState<GameContext, GameStateType>
 {
-	SplashScreen,
-	TitleScreen,
-	Gameplay,
-	Credits,
-	Stats,
-	Themes,
-	#if !DISABLE_SAVE_CHECK
-	SaveCheck,
-	#endif
+public:
+	void update(StateMachine & machine) override;
+	void render(StateMachine & machine) override;
 };
