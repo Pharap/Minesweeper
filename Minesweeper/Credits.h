@@ -33,6 +33,6 @@ namespace Strings
 		Tester0,
 		Tester1
 	};
-
-	#include "Languages.h"
 }
+
+#include "Languages.h"
