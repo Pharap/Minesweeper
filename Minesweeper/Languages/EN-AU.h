@@ -5,6 +5,7 @@ STRING_PLAY("Play")
 STRING_CREDITS("Props")
 STRING_STATS("Stats")
 STRING_SETTINGS("Settings")
+STRING_THEMES("Themes")
 
 // Game
 STRING_YOU_WIN("You beauty!")

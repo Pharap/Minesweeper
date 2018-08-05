@@ -36,6 +36,7 @@ namespace location \
 #define STRING_CREDITS(text) STRING(Credits, text)
 #define STRING_STATS(text) STRING(Stats, text)
 #define STRING_SETTINGS(text) STRING(Settings, text)
+#define STRING_THEMES(text) STRING(Themes, text)
 
 // Game
 #define STRING_YOU_WIN(text) STRING(YouWin, text)
@@ -83,6 +84,7 @@ namespace location \
 #undef STRING_CREDITS
 #undef STRING_STATS
 #undef STRING_SETTINGS
+#undef STRING_THEMES
 
 // Game
 #undef STRING_YOU_WIN
