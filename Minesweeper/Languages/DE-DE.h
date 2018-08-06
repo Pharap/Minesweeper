@@ -18,6 +18,7 @@ STRING_NO("Nein")
 
 // Credits
 STRING_PROGRAMMING("Programmierung")
+STRING_GRAPHICS("Grafiken")
 STRING_TESTING("Spieletester")
 STRING_LOCALISATION("\x9A""bersetzung")
 
