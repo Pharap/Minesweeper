@@ -25,6 +25,7 @@
 const CreditsState::Category CreditsState::Categories[] PROGMEM =
 {
 	Category(Strings::Programming, Strings::Programmers),
+	Category(Strings::Graphics, Strings::Artists),
 	Category(Strings::Testing, Strings::Testers),
 	Category(Strings::Localisation, Strings::Translators),
 };
@@ -32,7 +33,11 @@ const CreditsState::Category CreditsState::Categories[] PROGMEM =
 void CreditsState::update(StateMachine & machine)
 {
 	constexpr static const uint8_t CategoryCount = ArrayLength(CreditsState::Categories);
-	constexpr static const uint8_t ScrollMaxLines = ArrayLength(Strings::Programmers) + ArrayLength(Strings::Testers) + ArrayLength(Strings::Translators) + (CategoryCount * 2);
+	// To do: find a way to make this automatic
+	constexpr static const uint8_t ScrollMaxLines = (CategoryCount * 2) +
+	ArrayLength(Strings::Programmers) + ArrayLength(Strings::Artists) +
+	ArrayLength(Strings::Testers) + ArrayLength(Strings::Translators);
+
 	constexpr static const uint8_t ScrollMax = (ScrollMaxLines * FontLineHeight);
 	
 	auto & arduboy = machine.getContext().arduboy;
@@ -131,7 +136,11 @@ void CreditsState::render(StateMachine & machine)
 	// Draw the arrows
 	{
 		constexpr static const uint8_t CategoryCount = ArrayLength(CreditsState::Categories);
-		constexpr static const uint8_t ScrollMaxLines = ArrayLength(Strings::Programmers) + ArrayLength(Strings::Testers) + ArrayLength(Strings::Translators) + (CategoryCount * 2);
+		// To do: find a way to make this automatic
+		constexpr static const uint8_t ScrollMaxLines = (CategoryCount * 2) +
+		ArrayLength(Strings::Programmers) + ArrayLength(Strings::Artists) +
+		ArrayLength(Strings::Testers) + ArrayLength(Strings::Translators);
+
 		constexpr static const uint8_t ScrollMax = (ScrollMaxLines * FontLineHeight);
 
 		constexpr const uint8_t x = Arduboy::ScreenWidth - Images::ArrowWidth;
