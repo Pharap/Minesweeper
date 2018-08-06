@@ -29,38 +29,59 @@ void ThemesState::update(StateMachine & machine)
 	{
 		machine.changeState(GameStateType::TitleScreen);
 	}
+	
+	if (arduboy.justPressed(Arduboy::ButtonLeft))
+	{
+		if (Context::mineType > Context::FirstMineType)
+			--Context::mineType;
+	}
+
+	if (arduboy.justPressed(Arduboy::ButtonRight))
+	{
+		if (Context::mineType < Context::LastMineType)
+			++Context::mineType;
+	}
 }
 
 void ThemesState::render(StateMachine & machine)
 {
 	auto & arduboy = machine.getContext().arduboy;
 
-	constexpr const uint8_t step = FontCharHeight + 1;
-
-	uint8_t y = 4;
-
-	// Draw the title
+	// Draw the state title "themes"
 	{
-		constexpr const uint8_t width = StringWidth(Strings::Themes);
-		constexpr const uint8_t x = CalculateCentreX(width);
+		constexpr uint8_t x = CalculateCentreX(StringWidth(Strings::Themes));
+		constexpr uint8_t y = 4;
+
 		arduboy.setCursor(x, y);
 		arduboy.print(AsFlashString(Strings::Themes));
 	}
-	
-	// Draw a placeholder message
+
+	// Draw mine selector
 	{
-		constexpr const uint8_t x = 4;
+		constexpr uint8_t singleMargin = 2;
+		constexpr uint8_t doubleMargin = singleMargin * 2;
 
-		y += step;
-		arduboy.setCursor(x, y);
-		arduboy.print(F("Coming Soon"));
+		constexpr uint8_t x = CalculateCentreX(Images::LargeTileFrameWidth);
+		constexpr uint8_t y = CalculateCentreY(Images::LargeTileFrameHeight);
 
-		y += step;
-		arduboy.setCursor(x, y);
-		arduboy.print(F("Please press B"));
-		
-		y += step;
-		arduboy.setCursor(x, y);
-		arduboy.print(F("to go back"));
+		arduboy.drawRect(x - singleMargin, y - singleMargin, Images::LargeTileFrameWidth + doubleMargin, Images::LargeTileFrameHeight + doubleMargin, Arduboy::ColourWhite);
+
+		const uint8_t index = (12 + Context::mineType);
+		Sprites::drawOverwrite(x, y, Images::LargeTiles, index);
+
+		constexpr uint8_t leftArrowX = x - (Images::ArrowWidth + singleMargin);
+		constexpr uint8_t rightArrowX = x + (Images::LargeTileFrameWidth + singleMargin);
+
+		constexpr uint8_t arrowY = y + CalculateCentre(Images::LargeTileFrameHeight, Images::ArrowHeight);
+
+		if (Context::mineType > Context::FirstMineType)
+		{
+			Sprites::drawOverwrite(leftArrowX, arrowY, Images::Arrows, 2);
+		}
+
+		if (Context::mineType < Context::LastMineType)
+		{
+			Sprites::drawOverwrite(rightArrowX, arrowY, Images::Arrows, 3);
+		}
 	}
 }
