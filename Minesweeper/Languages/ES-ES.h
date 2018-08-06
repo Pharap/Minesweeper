@@ -18,6 +18,7 @@ STRING_NO("No")
 
 // Credits
 STRING_PROGRAMMING("Programaci\xA2n")
+STRING_GRAPHICS("Gr""\xA2""ficos")
 STRING_TESTING("Pruebas")
 STRING_LOCALISATION("Traducci\xA2n")
 

@@ -18,6 +18,7 @@ STRING_NO("Non")
 
 // Credits
 STRING_PROGRAMMING("Programmation")
+STRING_GRAPHICS("Graphique")
 STRING_TESTING("\x90""valuation")
 STRING_LOCALISATION("Traduction")
 
