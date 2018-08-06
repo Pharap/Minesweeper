@@ -35,7 +35,6 @@ private:
 
 private:
 	uint8_t option = 0;
-	bool mineChangeMode = false;
 	
 public:	
 	void update(StateMachine & machine) override;
