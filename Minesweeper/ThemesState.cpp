@@ -25,7 +25,7 @@ void ThemesState::update(StateMachine & machine)
 {
 	auto & arduboy = machine.getContext().arduboy;
 	
-	if (arduboy.justPressed(Arduboy::ButtonB))
+	if (arduboy.justPressed(Arduboy::ButtonA) || arduboy.justPressed(Arduboy::ButtonB))
 	{
 		machine.changeState(GameStateType::TitleScreen);
 	}
