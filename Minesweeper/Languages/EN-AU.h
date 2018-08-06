@@ -16,6 +16,7 @@ STRING_NO("Yeah, no.")
 
 // Credits
 STRING_PROGRAMMING("Programming")
+STRING_GRAPHICS("Graphics")
 STRING_TESTING("Testing")
 STRING_LOCALISATION("Localisation")
 

@@ -18,6 +18,7 @@ STRING_NO("Nah...")
 
 // Credits
 STRING_PROGRAMMING("'im wot wrote it")
+STRING_GRAPHICS("doodles")
 STRING_TESTING("'em wot 'elped")
 STRING_LOCALISATION("London geezers")
 

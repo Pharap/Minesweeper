@@ -47,6 +47,7 @@ namespace location \
 
 // Credits
 #define STRING_PROGRAMMING(text) STRING(Programming, text)
+#define STRING_GRAPHICS(text) STRING(Graphics, text)
 #define STRING_TESTING(text) STRING(Testing, text)
 #define STRING_LOCALISATION(text) STRING(Localisation, text)
 
@@ -95,6 +96,7 @@ namespace location \
 
 // Credits
 #undef STRING_PROGRAMMING
+#undef STRING_GRAPHICS
 #undef STRING_TESTING
 #undef STRING_LOCALISATION
 
