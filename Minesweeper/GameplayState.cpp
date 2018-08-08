@@ -162,24 +162,39 @@ void GameplayState::render(StateMachine & machine)
 {
 	auto & context = machine.getContext();
 
+	// Draw background
+	{
+		constexpr uint8_t x = Arduboy::ScreenWidth - Images::BackgroundRightWidth;
+		
+		Sprites::drawOverwrite(0, 0, Images::BackgroundLeft, Context::mineType);
+		Sprites::drawOverwrite(x, 0, Images::BackgroundRight, Context::mineType);
+	}
+
 	const uint8_t gridX = (Arduboy::ScreenWidth - this->VisibleGridWidth) / 2;
 	const uint8_t gridY = (Arduboy::ScreenHeight - this->VisibleGridHeight) / 2;
 
+	// Draw grid
 	TileGridRenderer::drawGridAt(this->tiles, gridX, gridY);
-
-	{
-		const Tile & selectedTile = this->tiles.getItem(this->selector.X, this->selector.Y);
-		const uint8_t x = gridX + this->VisibleGridWidth + 1;
-		const uint8_t y = gridY;
-		TileGridRenderer::drawLargeTileAt(selectedTile, x, y);
-	}
 
 	auto & arduboy = context.arduboy;
 
+	// Draw selector
 	{
 		const uint8_t x = gridX + ((TileWidth + 1) * this->selector.X);
 		const uint8_t y = gridY + ((TileHeight + 1) * this->selector.Y);
+
 		arduboy.drawRect(x, y, (TileWidth + TileXBorder * 2), (TileHeight + TileYBorder * 2), Arduboy::ColourWhite);
+	}
+
+	// Draw large tile
+	{
+		constexpr uint8_t largeTileOffsetX = 9;
+		constexpr uint8_t largeTileOffsetY = 6;
+
+		const Tile & selectedTile = this->tiles.getItem(this->selector.X, this->selector.Y);
+		const uint8_t x = gridX + this->VisibleGridWidth + largeTileOffsetX;
+		const uint8_t y = gridY + largeTileOffsetY;
+		TileGridRenderer::drawLargeTileAt(selectedTile, x, y);
 	}
 
 	switch (this->status)
