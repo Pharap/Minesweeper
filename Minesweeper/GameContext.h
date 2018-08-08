@@ -35,7 +35,7 @@ public:
 	Arduboy2 arduboy;
 
 	constexpr const static uint8_t FirstMineType = 0;
-	constexpr const static uint8_t LastMineType = 3;
+	constexpr const static uint8_t LastMineType = 4;
 
 	static uint8_t mineType;
 
