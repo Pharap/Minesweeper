@@ -16,6 +16,13 @@ STRING_PLAY_AGAIN("\xA8Jugar de nuevo?")
 STRING_YES("S\xA1")
 STRING_NO("No")
 
+// Themes
+STRING_THEME_SEA("Mar")
+STRING_THEME_LAND("Tierra")
+STRING_THEME_TURTLE("Tortuga")
+STRING_THEME_CACTUS("Cactus")
+STRING_THEM_PENGUIN("Pinguino")
+
 // Credits
 STRING_PROGRAMMING("Programaci\xA2n")
 STRING_GRAPHICS("Gr""\xA2""ficos")
