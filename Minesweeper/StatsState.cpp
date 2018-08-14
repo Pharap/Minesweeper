@@ -21,12 +21,6 @@
 
 #include "Utils.h"
 
-void StatsState::activate(StateMachine & machine)
-{
-	(void)machine;
-	this->stats = Context::SaveData::loadAndVerify();
-}
-
 void StatsState::update(StateMachine & machine)
 {
 	auto & context = machine.getContext();
@@ -39,8 +33,8 @@ void StatsState::update(StateMachine & machine)
 		if(option == ConfirmationOption::Yes)
 			if (!this->cleared)
 			{
-				Context::SaveData::clearSave();
-				this->stats = GameStats();
+				Context::stats = GameStats();
+				Context::SaveData::saveData(Context::stats);
 				this->cleared = true;
 			}
 
@@ -84,7 +78,7 @@ void StatsState::render(StateMachine & machine)
 
 		y += step;
 		arduboy.setCursor(x, y);
-		arduboy.print(this->stats.wins);
+		arduboy.print(Context::stats.wins);
 		
 		y += step;
 		arduboy.setCursor(x, y);
@@ -93,7 +87,7 @@ void StatsState::render(StateMachine & machine)
 
 		y += step;
 		arduboy.setCursor(x, y);
-		arduboy.print(this->stats.losses);
+		arduboy.print(Context::stats.losses);
 
 		y += step;
 

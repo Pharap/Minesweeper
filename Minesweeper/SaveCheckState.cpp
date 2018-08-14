@@ -22,10 +22,10 @@
 
 void SaveCheckState::activate(StateMachine & machine)
 {
-	if (Context::SaveData::verifySave())
+	if (Context::SaveData::verifyChecksum())
 	{
+		Context::stats = Context::SaveData::loadData();
 		machine.changeState(GameStateType::TitleScreen);
-		return;
 	}
 }
 
@@ -38,8 +38,9 @@ void SaveCheckState::update(StateMachine & machine)
 	{
 		if (option == ConfirmationOption::Yes)
 		{
+			Context::stats = GameStats();
+			Context::SaveData::initialise(Context::stats);
 			Context::saveCheckEnabled = true;
-			Context::SaveData::clearSave();
 		}
 
 		if (option == ConfirmationOption::No)

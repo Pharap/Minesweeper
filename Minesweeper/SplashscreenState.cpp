@@ -38,6 +38,16 @@ void SplashScreenState::update(StateMachine & machine)
 	if (arduboy.justPressed(Arduboy::ButtonA) || arduboy.justPressed(Arduboy::ButtonB))
 	{
 #if DISABLE_SAVE_CHECK
+		if (Context::SaveData::verifyChecksum())
+		{
+			Context::stats = Context::SaveData::loadData();
+		}
+		else
+		{
+			Context::stats = GameStats();
+			Context::SaveData::initialise(Context::stats);
+		}
+		
 		machine.changeState(GameStateType::TitleScreen);
 #else
 		machine.changeState(GameStateType::SaveCheck);
