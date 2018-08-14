@@ -25,6 +25,8 @@ void SaveCheckState::activate(StateMachine & machine)
 	if (Context::SaveData::verifyChecksum())
 	{
 		Context::stats = Context::SaveData::loadData();
+		if(Context::stats.themeIndex > Context::LastThemeIndex)
+			Context::stats.themeIndex = Context::LastThemeIndex;
 		machine.changeState(GameStateType::TitleScreen);
 	}
 }

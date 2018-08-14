@@ -164,8 +164,8 @@ void GameplayState::render(StateMachine & machine)
 	{
 		constexpr uint8_t x = Arduboy::ScreenWidth - Images::BackgroundRightWidth;
 		
-		Sprites::drawOverwrite(0, 0, Images::BackgroundLeft, Context::mineType);
-		Sprites::drawOverwrite(x, 0, Images::BackgroundRight, Context::mineType);
+		Sprites::drawOverwrite(0, 0, Images::BackgroundLeft, Context::stats.themeIndex);
+		Sprites::drawOverwrite(x, 0, Images::BackgroundRight, Context::stats.themeIndex);
 	}
 
 	const uint8_t gridX = (Arduboy::ScreenWidth - this->VisibleGridWidth) / 2;

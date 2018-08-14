@@ -33,7 +33,8 @@ void StatsState::update(StateMachine & machine)
 		if(option == ConfirmationOption::Yes)
 			if (!this->cleared)
 			{
-				Context::stats = GameStats();
+				Context::stats.wins = 0;
+				Context::stats.losses = 0;
 				Context::SaveData::saveData(Context::stats);
 				this->cleared = true;
 			}

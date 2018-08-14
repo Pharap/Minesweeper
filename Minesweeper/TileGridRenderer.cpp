@@ -25,7 +25,7 @@ void TileGridRenderer::drawTileAt(const Tile & tile, const uint8_t & x, const ui
 	if (tile.isVisible())
 	{
 		if (tile.isMine())
-			index = (12 + GameContext::mineType);
+			index = (12 + GameContext::stats.themeIndex);
 		else
 			index = tile.getMineCount();
 	}
@@ -47,7 +47,7 @@ void TileGridRenderer::drawLargeTileAt(const Tile & tile, const uint8_t & x, con
 	if (tile.isVisible())
 	{
 		if (tile.isMine())
-			index = (12 + GameContext::mineType);
+			index = (12 + GameContext::stats.themeIndex);
 		else
 			index = tile.getMineCount();
 	}
