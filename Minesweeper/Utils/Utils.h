@@ -7,3 +7,4 @@
 #include "Type.h"
 #include "Random.h"
 #include "FlashString.h"
+#include "SkullHash.h"
