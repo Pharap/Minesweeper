@@ -27,19 +27,20 @@ void ThemesState::update(StateMachine & machine)
 	
 	if (arduboy.justPressed(Arduboy::ButtonA) || arduboy.justPressed(Arduboy::ButtonB))
 	{
+		Context::SaveData::saveData(Context::stats);
 		machine.changeState(GameStateType::TitleScreen);
 	}
 	
 	if (arduboy.justPressed(Arduboy::ButtonLeft))
 	{
-		if (Context::mineType > Context::FirstMineType)
-			--Context::mineType;
+		if (Context::stats.themeIndex > Context::FirstThemeIndex)
+			--Context::stats.themeIndex;
 	}
 
 	if (arduboy.justPressed(Arduboy::ButtonRight))
 	{
-		if (Context::mineType < Context::LastMineType)
-			++Context::mineType;
+		if (Context::stats.themeIndex < Context::LastThemeIndex)
+			++Context::stats.themeIndex;
 	}
 }
 
@@ -66,7 +67,7 @@ void ThemesState::render(StateMachine & machine)
 
 		arduboy.drawRect(x - singleMargin, y - singleMargin, Images::LargeTileFrameWidth + doubleMargin, Images::LargeTileFrameHeight + doubleMargin, Arduboy::ColourWhite);
 
-		const uint8_t index = (12 + Context::mineType);
+		const uint8_t index = (12 + Context::stats.themeIndex);
 		Sprites::drawOverwrite(x, y, Images::LargeTiles, index);
 
 		constexpr uint8_t leftArrowX = x - (Images::ArrowWidth + singleMargin);
@@ -74,12 +75,12 @@ void ThemesState::render(StateMachine & machine)
 
 		constexpr uint8_t arrowY = y + CalculateCentre(Images::LargeTileFrameHeight, Images::ArrowHeight);
 
-		if (Context::mineType > Context::FirstMineType)
+		if (Context::stats.themeIndex > Context::FirstThemeIndex)
 		{
 			Sprites::drawOverwrite(leftArrowX, arrowY, Images::Arrows, 2);
 		}
 
-		if (Context::mineType < Context::LastMineType)
+		if (Context::stats.themeIndex < Context::LastThemeIndex)
 		{
 			Sprites::drawOverwrite(rightArrowX, arrowY, Images::Arrows, 3);
 		}

@@ -35,11 +35,10 @@ public:
 
 	Arduboy2 arduboy;
 
-	constexpr const static uint8_t FirstMineType = 0;
-	constexpr const static uint8_t LastMineType = 4;
+	constexpr const static uint8_t FirstThemeIndex = 0;
+	constexpr const static uint8_t LastThemeIndex = 4;
 
 	static GameStats stats;
-	static uint8_t mineType;
 
 #if DISABLE_SAVE_CHECK
 	constexpr const static bool saveCheckEnabled = true;

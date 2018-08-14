@@ -20,6 +20,8 @@
 
 struct GameStats
 {
-	uint16_t wins;
-	uint16_t losses;
+	uint8_t themeIndex = 0;
+	uint8_t reserved = 0;
+	uint16_t wins = 0;
+	uint16_t losses = 0;
 };

@@ -88,7 +88,7 @@ void TitleScreenState::render(StateMachine & machine)
 
 			if (this->option == i)
 			{
-				const uint8_t index = (12 + Context::mineType);
+				const uint8_t index = (12 + Context::stats.themeIndex);
 				Sprites::drawOverwrite(x - (2 * FontCharWidth), y, Images::Tiles, index);
 			}
 		}
