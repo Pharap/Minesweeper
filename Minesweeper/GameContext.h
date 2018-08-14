@@ -22,11 +22,12 @@
 #include "Settings.h"
 #include "GameStats.h"
 #include "SaveSystem.h"
+#include "Utils.h"
 
 class GameContext
 {
 public:
-	using SaveData = SaveSystem<1024, 512, GameStats>;
+	using SaveData = SaveSystem<Checksum<SkullHash>, 1024, 512, GameStats>;
 
 public:
 	constexpr const static uint8_t Width = 7;
@@ -37,6 +38,7 @@ public:
 	constexpr const static uint8_t FirstMineType = 0;
 	constexpr const static uint8_t LastMineType = 4;
 
+	static GameStats stats;
 	static uint8_t mineType;
 
 #if DISABLE_SAVE_CHECK

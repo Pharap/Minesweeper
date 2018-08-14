@@ -56,7 +56,6 @@ private:
 private:
 	TileGrid tiles;
 	GameStatus status;
-	GameStats stats;
 	Point2<uint8_t> selector;
 	bool isFirstMove;
 	ConfirmationMenu retryMenu;

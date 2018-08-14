@@ -31,11 +31,8 @@ private:
 	bool cleared = false;
 	bool deleteMenuActive = false;
 	ConfirmationMenu deleteMenu;
-	GameStats stats;
 
 public:
-	void activate(StateMachine & machine) override;
-
 	void update(StateMachine & machine) override;
 	void render(StateMachine & machine) override;
 };

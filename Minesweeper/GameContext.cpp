@@ -20,4 +20,5 @@
 bool GameContext::saveCheckEnabled = true;
 #endif
 
+GameStats GameContext::stats = GameStats();
 uint8_t GameContext::mineType = 0;

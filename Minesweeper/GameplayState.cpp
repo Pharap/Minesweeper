@@ -27,8 +27,6 @@ void GameplayState::activate(StateMachine & machine)
 {
 	auto & context = machine.getContext();
 	context.arduboy.initRandomSeed();
-	if (Context::saveCheckEnabled)
-		this->stats = Context::SaveData::loadAndVerify();
 
 	this->tiles.fill(Tile());
 
@@ -95,9 +93,9 @@ void GameplayState::update(StateMachine & machine)
 					{
 						this->status = GameStatus::Lost;
 						this->revealAllMines(this->tiles);
-						++this->stats.losses;
+						++Context::stats.losses;
 						if (Context::saveCheckEnabled)
-							Context::SaveData::save(this->stats);
+							Context::SaveData::saveData(Context::stats);
 					}
 					else if(tile.getMineCount() == 0)
 					{
@@ -115,9 +113,9 @@ void GameplayState::update(StateMachine & machine)
 			{
 				this->status = GameStatus::Won;
 				this->revealAllMines(this->tiles);
-				++this->stats.wins;
+				++Context::stats.wins;
 				if (Context::saveCheckEnabled)
-					Context::SaveData::save(this->stats);
+					Context::SaveData::saveData(Context::stats);
 			}
 		}
 		break;
