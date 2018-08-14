@@ -16,6 +16,13 @@ STRING_PLAY_AGAIN("Rejouer?")
 STRING_YES("Oui")
 STRING_NO("Non")
 
+// Themes
+STRING_THEME_SEA("Navale")
+STRING_THEME_LAND("Terrestre")
+STRING_THEME_TURTLE("Tortue")
+STRING_THEME_CACTUS("Cactus")
+STRING_THEM_PENGUIN("Pingouin")
+
 // Credits
 STRING_PROGRAMMING("Programmation")
 STRING_GRAPHICS("Graphique")
