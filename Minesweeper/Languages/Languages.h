@@ -146,7 +146,7 @@ namespace Strings
 	const char Selected[] PROGMEM = "> ";
 	const char NotSelected[] PROGMEM = "  ";
 
-	const char Themes[] PROGMEM =
+	char const * const ThemeNames[] PROGMEM =
 	{
 		Sea,
 		Land,
