@@ -9,3 +9,4 @@
 #include "FlashString.h"
 #include "SkullHash.h"
 #include "Checksum.h"
+#include "Eeprom.h"
