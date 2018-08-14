@@ -16,6 +16,13 @@ STRING_PLAY_AGAIN("'ave ano'er round?")
 STRING_YES("Yeah...")
 STRING_NO("Nah...")
 
+// Themes
+STRING_THEME_SEA("Sea")
+STRING_THEME_LAND("Land")
+STRING_THEME_TURTLE("Turtle")
+STRING_THEME_CACTUS("Cactus")
+STRING_THEM_PENGUIN("Penguin")
+
 // Credits
 STRING_PROGRAMMING("'im wot wrote it")
 STRING_GRAPHICS("doodles")

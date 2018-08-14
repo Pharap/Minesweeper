@@ -1,3 +1,5 @@
+#pragma once
+
 BEGIN_LANGUAGE_VARIANT(EN, AU)
 
 // Titlescreen
@@ -13,6 +15,13 @@ STRING_YOU_LOSE("Bugger me!")
 STRING_PLAY_AGAIN("Feeling lucky?")
 STRING_YES("Yep")
 STRING_NO("Yeah, no.")
+
+// Themes
+STRING_THEME_SEA("Deadly Sea")
+STRING_THEME_LAND("Scorching Land")
+STRING_THEME_TURTLE("Killer Turtle")
+STRING_THEME_CACTUS("Toxic Cactus")
+STRING_THEM_PENGUIN("Evil Penguin")
 
 // Credits
 STRING_PROGRAMMING("Programming")
@@ -31,9 +40,11 @@ STRING_CREATE_SAVE("No save data found.\nCreate new data?")
 
 // Translators
 STRING_TRANSLATOR(0, "Filmote")
+STRING_TRANSLATOR(1, "Pharap")
 
 BEGIN_TRANSLATORS
 TRANSLATOR(0)
+TRANSLATOR(1)
 END_TRANSLATORS
 
 END_LANGUAGE_VARIANT
