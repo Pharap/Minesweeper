@@ -45,6 +45,13 @@ namespace location \
 #define STRING_YES(text) STRING(Yes, text)
 #define STRING_NO(text) STRING(No, text)
 
+// Themes
+#define STRING_THEME_SEA(text) STRING(Sea, text)
+#define STRING_THEME_LAND(text) STRING(Land, text)
+#define STRING_THEME_CACTUS(text) STRING(Cactus, text)
+#define STRING_THEME_TURTLE(text) STRING(Turtle, text)
+#define STRING_THEM_PENGUIN(text) STRING(Penguin, text)
+
 // Credits
 #define STRING_PROGRAMMING(text) STRING(Programming, text)
 #define STRING_GRAPHICS(text) STRING(Graphics, text)
@@ -138,4 +145,13 @@ namespace Strings
 	const char ColonSpace[] PROGMEM = ": ";
 	const char Selected[] PROGMEM = "> ";
 	const char NotSelected[] PROGMEM = "  ";
+
+	const char Themes[] PROGMEM =
+	{
+		Sea,
+		Land,
+		Turtle,
+		Cactus,
+		Penguin,
+	};
 }

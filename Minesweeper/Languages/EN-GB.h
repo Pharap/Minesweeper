@@ -16,6 +16,13 @@ STRING_PLAY_AGAIN("Play again?")
 STRING_YES("Yes")
 STRING_NO("No")
 
+// Themes
+STRING_THEME_SEA("Sea")
+STRING_THEME_LAND("Land")
+STRING_THEME_TURTLE("Turtle")
+STRING_THEME_CACTUS("Cactus")
+STRING_THEM_PENGUIN("Penguin")
+
 // Credits
 STRING_PROGRAMMING("Programming")
 STRING_GRAPHICS("Graphics")
