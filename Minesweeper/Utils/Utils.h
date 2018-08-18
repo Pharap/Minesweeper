@@ -11,3 +11,4 @@
 #include "Checksum.h"
 #include "Eeprom.h"
 #include "AvailableStack.h"
+#include "PlacementNew.h"
