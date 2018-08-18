@@ -91,7 +91,7 @@ public:
 		const size_t dataSize = static_cast<size_t>(Eeprom::read(DataSizeAddress));
 		
 		const ptrdiff_t availableStackSpace = getAvailableStackSpace();		
-		if(availableStackSpace < 0 || dataSize >= static_cast<size_t>(availableStackSpace - usedSpace))
+		if(availableStackSpace < 0 || dataSize >= static_cast<size_t>(availableStackSpace))
 			return 0;
 
 		char buffer[dataSize];
