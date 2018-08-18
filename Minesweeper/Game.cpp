@@ -66,7 +66,8 @@ void Game::loop(void)
 
 		if (this->currentStateId != this->nextStateId)
 		{
-			delete this->currentState;
+			// Strictly speaking this does nothing, but I'm keeping it for the sake of correctness
+			this->currentState->~GameState();
 			this->currentState = this->createState(this->nextStateId);
 			this->currentStateId = this->nextStateId;
 		}
@@ -96,14 +97,14 @@ Game::State * Game::createState(const StateId & stateType)
 {
 	switch (stateType)
 	{
-		case GameStateType::SplashScreen: return new SplashScreenState();
-		case GameStateType::TitleScreen: return new TitleScreenState();
-		case GameStateType::Gameplay: return new GameplayState();
-		case GameStateType::Credits: return new CreditsState();
-		case GameStateType::Stats: return new StatsState();
-		case GameStateType::Themes: return new ThemesState();
+		case GameStateType::SplashScreen: return new (&this->stateData[0]) SplashScreenState();
+		case GameStateType::TitleScreen: return new (&this->stateData[0]) TitleScreenState();
+		case GameStateType::Gameplay: return new (&this->stateData[0]) GameplayState();
+		case GameStateType::Credits: return new (&this->stateData[0]) CreditsState();
+		case GameStateType::Stats: return new (&this->stateData[0]) StatsState();
+		case GameStateType::Themes: return new (&this->stateData[0]) ThemesState();
 		#if !DISABLE_SAVE_CHECK
-		case GameStateType::SaveCheck: return new SaveCheckState();
+		case GameStateType::SaveCheck: return new (&this->stateData[0]) SaveCheckState();
 		#endif
 		default: return nullptr;
 	}
