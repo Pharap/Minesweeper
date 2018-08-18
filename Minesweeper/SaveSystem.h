@@ -128,7 +128,8 @@ public:
 		const size_t limit = (dataSize < DataSize) ? dataSize : DataSize;
 
 		DataType data;
-		Eeprom::read(DataAddress, data);
+		char * dataBuffer = reinterpret_cast<char *>(&data);
+		Eeprom::read(reinterpret_cast<const char *>(DataAddress), dataBuffer, limit);
 		return data;
 	}
 
