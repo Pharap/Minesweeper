@@ -1,5 +1,9 @@
 #pragma once
 
+//
+// German localisation provided by Nicole Birgel
+//
+
 BEGIN_LANGUAGE_VARIANT(DE, DE)
 
 // Titlescreen

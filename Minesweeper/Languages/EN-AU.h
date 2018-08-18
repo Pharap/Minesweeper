@@ -1,5 +1,11 @@
 #pragma once
 
+//
+// Aussie English localisation provided by Filmote (https://github.com/filmote)
+// and Pharap (https://github.com/Pharap)
+// Please note: this localisation is a joke
+//
+
 BEGIN_LANGUAGE_VARIANT(EN, AU)
 
 // Titlescreen

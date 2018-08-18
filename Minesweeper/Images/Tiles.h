@@ -16,6 +16,11 @@
 // limitations under the License.
 //
 
+//
+// Tiles created by Pharap (https://github.com/Pharap)
+// Penguin tile created by Vampirics (https://github.com/vampirics)
+//
+
 namespace Images
 {
 	constexpr const static uint8_t TileFrameWidth = 8;

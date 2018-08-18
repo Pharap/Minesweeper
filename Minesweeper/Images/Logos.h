@@ -16,6 +16,10 @@
 // limitations under the License.
 //
 
+//
+// Title, logo and arrows created by Pharap (https://github.com/Pharap)
+//
+
 namespace Images
 {
 	constexpr const static uint8_t TitleWidth = 128;
