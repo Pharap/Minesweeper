@@ -88,7 +88,11 @@ public:
 	// Calculate the checksum from the data in EEPROM
 	static uint32_t calculateChecksum(void)
 	{
-		const uint16_t dataSize = Eeprom::read(DataSizeAddress);
+		const size_t dataSize = static_cast<size_t>(Eeprom::read(DataSizeAddress));
+		
+		const ptrdiff_t availableStackSpace = getAvailableStackSpace();		
+		if(availableStackSpace < 0 || dataSize >= static_cast<size_t>(availableStackSpace - usedSpace))
+			return 0;
 
 		char buffer[dataSize];
 		Eeprom::read(DataStart, buffer, dataSize);
@@ -99,7 +103,14 @@ public:
 	// Verify the file checksum
 	static bool verifyChecksum(void)
 	{
-		const uint16_t dataSize = Eeprom::read(DataSizeAddress);
+		// Used by checksum and savedChecksum
+		constexpr size_t usedSpace = sizeof(uint32_t) * 2;
+		
+		const size_t dataSize = static_cast<size_t>(Eeprom::read(DataSizeAddress));
+		
+		const ptrdiff_t availableStackSpace = getAvailableStackSpace();		
+		if(availableStackSpace < 0 || dataSize >= static_cast<size_t>(availableStackSpace - usedSpace))
+			return false;
 
 		char buffer[dataSize];
 		Eeprom::read(DataStart, buffer, dataSize);
