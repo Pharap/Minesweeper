@@ -221,7 +221,7 @@ namespace Eeprom
 	template< typename T >
 	void read(uintptr_t address, T array[], size_t quantity)
 	{
-		eeprom_read_block(&array[0], address, sizeof(T) * quantity);
+		eeprom_read_block(&array[0], reinterpret_cast<const void *>(address), sizeof(T) * quantity);
 	}
 
 	template< typename T >
