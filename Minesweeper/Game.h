@@ -21,14 +21,42 @@
 #include "GameState.h"
 #include "GameStateMachine.h"
 
+#include "Utils.h"
+
+#include "SplashscreenState.h"
+#include "TitlescreenState.h"
+#include "GameplayState.h"
+#include "CreditsState.h"
+#include "StatsState.h"
+#include "ThemesState.h"
+#if !DISABLE_SAVE_CHECK
+#include "SaveCheckState.h"
+#endif
+
 class Game : public GameStateMachine<GameContext, GameStateType>
 {
 private:
+	// This union would be ill formed if it was instantiated
+	union StateData
+	{
+		SplashScreenState splashScreenState;
+		TitleScreenState titleScreenState;
+		GameplayState gameplayState;
+		CreditsState creditsState;
+		StatsState statsState;
+		ThemesState themesState;
+		#if !DISABLE_SAVE_CHECK
+		SaveCheckState saveCheckState;
+		#endif
+	};
+
+private:
 	Context context;
-	State * currentState;
 	StateId currentStateId;
 	StateId nextStateId;
 	bool changePending;
+	State * currentState;
+	char stateData[sizeof(StateData)];
 	
 public:
 	void setup(void);
@@ -40,6 +68,6 @@ public:
 	void changeState(const StateId & stateId) override;
 
 private:
-	static State * createState(const StateId & stateType);
+	State * createState(const StateId & stateType);
 
 };
