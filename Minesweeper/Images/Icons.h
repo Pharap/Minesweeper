@@ -16,6 +16,10 @@
 // limitations under the License.
 //
 
+//
+// Icons created by Vampirics (https://github.com/vampirics)
+//
+
 namespace Images
 {
 	constexpr uint8_t IconWidth = 28;

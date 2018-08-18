@@ -1,5 +1,9 @@
 #pragma once
 
+//
+// Plain English localisation provided by Pharap (https://github.com/Pharap)
+//
+
 BEGIN_LANGUAGE_VARIANT(EN, GB)
 
 // Titlescreen

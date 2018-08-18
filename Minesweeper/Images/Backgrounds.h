@@ -16,6 +16,10 @@
 // limitations under the License.
 //
 
+//
+// Background graphics created by Vampirics (https://github.com/vampirics)
+//
+
 namespace Images
 {
 	constexpr uint8_t BackgroundLeftWidth = 31;

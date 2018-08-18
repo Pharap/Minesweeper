@@ -1,5 +1,9 @@
 #pragma once
 
+//
+// French localisation provided by Vampirics (https://github.com/vampirics)
+//
+
 BEGIN_LANGUAGE_VARIANT(FR, FR)
 
 // Titlescreen

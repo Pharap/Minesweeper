@@ -1,5 +1,10 @@
 #pragma once
 
+//
+// Cockney English localisation provided by Pharap (https://github.com/Pharap)
+// Please note: this localisation is a joke
+//
+
 BEGIN_LANGUAGE_VARIANT(EN, LCY)
 
 // Titlescreen
