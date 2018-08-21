@@ -68,17 +68,24 @@ public:
 
 	void render(Arduboy2 & arduboy)
 	{
+		constexpr const uint8_t singleMargin = 4;
+		constexpr const uint8_t doubleMargin = singleMargin * 2;
+		constexpr const uint8_t extraMargin = singleMargin + 1;
+		constexpr const uint8_t doubleExtraMargin = extraMargin * 2;
+	
 		constexpr const uint8_t width = defaultWidth;
-		constexpr const uint8_t x = CalculateCentreX((width + 8) < Arduboy::ScreenWidth ? width : (Arduboy::ScreenWidth - 8));
+		constexpr const uint8_t widthWithMargin = width + doubleMargin;
+		constexpr const uint8_t x = CalculateCentreX((widthWithMargin < Arduboy::ScreenWidth) ? width : (Arduboy::ScreenWidth - doubleMargin));
 
 		constexpr const uint8_t height = StringHeight(2);
+		constexpr const uint8_t heightWithMargin = height + doubleMargin;
 
+		constexpr const uint8_t yBase = CalculateCentreY((heightWithMargin < Arduboy::ScreenHeight) ? height : (Arduboy::ScreenHeight - doubleMargin));
 		constexpr const uint8_t yStep = FontLineHeight;
-		constexpr const uint8_t yBase = CalculateCentreY((height + 8) < Arduboy::ScreenHeight ? height : (Arduboy::ScreenHeight - 8));
+
+		arduboy.fillRect(x - extraMargin, yBase - extraMargin, width + doubleExtraMargin, height + doubleExtraMargin, Arduboy::ColourBlack);
 
 		uint8_t y = yBase;
-
-		arduboy.fillRect(x - 4, yBase - 4, width + 8, height + 8, Arduboy::ColourBlack);
 		
 		arduboy.setCursor(x, y);
 		arduboy.print((this->optionIndex == 0) ? AsFlashString(Strings::Selected) : AsFlashString(Strings::NotSelected));
@@ -89,24 +96,31 @@ public:
 		arduboy.print((this->optionIndex == 1) ? AsFlashString(Strings::Selected) : AsFlashString(Strings::NotSelected));
 		arduboy.print(AsFlashString(Strings::No));
 
-		arduboy.drawRect(x - 4, yBase - 4, width + 8, height + 8, Arduboy::ColourWhite);
+		arduboy.drawRect(x - singleMargin, yBase - singleMargin, widthWithMargin, heightWithMargin, Arduboy::ColourWhite);
 	}
 
 	template< size_t Size >
 	void render(Arduboy2 & arduboy, const char (&progmemString)[Size])
 	{
+		constexpr const uint8_t singleMargin = 4;
+		constexpr const uint8_t doubleMargin = singleMargin * 2;
+		constexpr const uint8_t extraMargin = singleMargin + 1;
+		constexpr const uint8_t doubleExtraMargin = extraMargin * 2;
+	
 		constexpr const uint8_t stringWidth = StringWidth(Size - 1);
 		constexpr const uint8_t width = (stringWidth > defaultWidth) ? stringWidth : defaultWidth;
-		constexpr const uint8_t x = CalculateCentreX((width + 8) < Arduboy::ScreenWidth ? width : (Arduboy::ScreenWidth - 8));
+		constexpr const uint8_t widthWithMargin = width + doubleMargin;
+		constexpr const uint8_t x = CalculateCentreX((widthWithMargin < Arduboy::ScreenWidth) ? width : (Arduboy::ScreenWidth - doubleMargin));
 
 		constexpr const uint8_t height = StringHeight(3);
+		constexpr const uint8_t heightWithMargin = height + doubleMargin;
 
+		constexpr const uint8_t yBase = CalculateCentreY((heightWithMargin < Arduboy::ScreenHeight) ? height : (Arduboy::ScreenHeight - doubleMargin));
 		constexpr const uint8_t yStep = FontLineHeight;
-		constexpr const uint8_t yBase = CalculateCentreY((height + 8) < Arduboy::ScreenHeight ? height : (Arduboy::ScreenHeight - 8));
+
+		arduboy.fillRect(x - extraMargin, yBase - extraMargin, width + doubleExtraMargin, height + doubleExtraMargin, Arduboy::ColourBlack);
 
 		uint8_t y = yBase;
-
-		arduboy.fillRect(x - 4, yBase - 4, width + 8, height + 8, Arduboy::ColourBlack);
 
 		arduboy.setCursor(x, y);
 		arduboy.print(AsFlashString(progmemString));
@@ -121,6 +135,6 @@ public:
 		arduboy.print((this->optionIndex == 1) ? AsFlashString(Strings::Selected) : AsFlashString(Strings::NotSelected));
 		arduboy.print(AsFlashString(Strings::No));
 
-		arduboy.drawRect(x - 4, yBase - 4, width + 8, height + 8, Arduboy::ColourWhite);
+		arduboy.drawRect(x - singleMargin, yBase - singleMargin, widthWithMargin, heightWithMargin, Arduboy::ColourWhite);
 	}
 };
