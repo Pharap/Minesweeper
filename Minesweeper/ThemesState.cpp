@@ -47,43 +47,67 @@ void ThemesState::update(StateMachine & machine)
 
 void ThemesState::render(StateMachine & machine)
 {
+	constexpr uint8_t singleMargin = 2;
+	constexpr uint8_t doubleMargin = singleMargin * 2;
+
 	auto & arduboy = machine.getContext().arduboy;
 
 	// Draw the state title "themes"
 	{
 		constexpr uint8_t x = CalculateCentreX(StringWidth(Strings::Themes));
-		constexpr uint8_t y = 4;
+		constexpr uint8_t y = singleMargin;
 
 		arduboy.setCursor(x, y);
 		arduboy.print(AsFlashString(Strings::Themes));
 	}
 
+	// Draw the theme name
+	{
+		constexpr uint8_t y = Arduboy::ScreenHeight - (singleMargin + FontLineHeight);
+
+		FlashString name = reinterpret_cast<FlashString>(pgm_read_ptr(&Strings::ThemeNames[Context::stats.themeIndex]));
+
+		uint8_t x = CalculateCentreX(ProgmemStringWidth(name));
+
+		arduboy.setCursor(x, y);
+		arduboy.print(name);
+	}
+
 	// Draw mine selector
 	{
-		constexpr uint8_t singleMargin = 2;
-		constexpr uint8_t doubleMargin = singleMargin * 2;
+		constexpr uint8_t x = CalculateCentreX(Images::IconWidth);
+		constexpr uint8_t y = CalculateCentreY(Images::IconHeight);
 
-		constexpr uint8_t x = CalculateCentreX(Images::LargeTileFrameWidth);
-		constexpr uint8_t y = CalculateCentreY(Images::LargeTileFrameHeight);
-
-		arduboy.drawRect(x - singleMargin, y - singleMargin, Images::LargeTileFrameWidth + doubleMargin, Images::LargeTileFrameHeight + doubleMargin, Arduboy::ColourWhite);
-
-		const uint8_t index = (12 + Context::stats.themeIndex);
-		Sprites::drawOverwrite(x, y, Images::LargeTiles, index);
-
+		constexpr uint8_t arrowY = y + CalculateCentre(Images::IconHeight, Images::ArrowHeight);
 		constexpr uint8_t leftArrowX = x - (Images::ArrowWidth + singleMargin);
-		constexpr uint8_t rightArrowX = x + (Images::LargeTileFrameWidth + singleMargin);
-
-		constexpr uint8_t arrowY = y + CalculateCentre(Images::LargeTileFrameHeight, Images::ArrowHeight);
+		constexpr uint8_t rightArrowX = x + (Images::IconWidth + singleMargin);
+		
+		constexpr uint8_t iconY = y;
+		constexpr uint8_t leftIconX = leftArrowX - (Images::IconWidth + singleMargin);
+		constexpr uint8_t rightIconX = rightArrowX + (Images::ArrowWidth + singleMargin);
 
 		if (Context::stats.themeIndex > Context::FirstThemeIndex)
 		{
 			Sprites::drawOverwrite(leftArrowX, arrowY, Images::Arrows, 2);
+			Sprites::drawOverwrite(leftIconX, iconY, Images::Icons, Context::stats.themeIndex - 1);
 		}
 
 		if (Context::stats.themeIndex < Context::LastThemeIndex)
 		{
 			Sprites::drawOverwrite(rightArrowX, arrowY, Images::Arrows, 3);
+			Sprites::drawOverwrite(rightIconX, iconY, Images::Icons, Context::stats.themeIndex + 1);
 		}
+
+		Sprites::drawOverwrite(x, y, Images::Icons, Context::stats.themeIndex);
+
+		constexpr uint8_t rectWidth = Images::IconWidth + doubleMargin;
+		constexpr uint8_t rectHeight = Images::IconHeight + doubleMargin;
+
+		arduboy.drawRect(x - singleMargin, y - singleMargin, rectWidth, rectHeight);
+		arduboy.drawRect(leftIconX - singleMargin, iconY - singleMargin, rectWidth, rectHeight);
+		arduboy.drawRect(rightIconX - singleMargin, iconY - singleMargin, rectWidth, rectHeight);
+		
+		arduboy.drawFastHLine(0, y - doubleMargin, Arduboy::ScreenWidth);
+		arduboy.drawFastHLine(0, y + doubleMargin + (Images::IconHeight - 1), Arduboy::ScreenWidth);
 	}
 }
