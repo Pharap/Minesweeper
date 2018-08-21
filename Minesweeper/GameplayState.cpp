@@ -206,28 +206,40 @@ void GameplayState::render(StateMachine & machine)
 
 void GameplayState::renderWin(Arduboy2 & arduboy)
 {
+	constexpr const uint8_t singleMargin = 4;
+	constexpr const uint8_t doubleMargin = singleMargin * 2;
+	constexpr const uint8_t extraMargin = singleMargin + 1;
+	constexpr const uint8_t doubleExtraMargin = extraMargin * 2;
+		
 	constexpr const uint8_t width = StringWidth(Strings::YouWin);
 	constexpr const uint8_t height = StringHeight(1);
 
 	constexpr const uint8_t x = CalculateCentreX(width);
+	constexpr const uint8_t y = CalculateCentreY(height);
 
-	arduboy.fillRect(x - 4, 16 - 4, width + 8, height + 8, Arduboy::ColourBlack);
-	arduboy.setCursor(x, 16);
+	arduboy.fillRect(x - extraMargin, y - extraMargin, width + doubleExtraMargin, height + doubleExtraMargin, Arduboy::ColourBlack);
+	arduboy.setCursor(x, y);
 	arduboy.print(AsFlashString(Strings::YouWin));
-	arduboy.drawRect(x - 4, 16 - 4, width + 8, height + 8, Arduboy::ColourWhite);
+	arduboy.drawRect(x - singleMargin, y - singleMargin, width + doubleMargin, height + doubleMargin, Arduboy::ColourWhite);
 }
 
 void GameplayState::renderLoss(Arduboy2 & arduboy)
 {
+	constexpr const uint8_t singleMargin = 4;
+	constexpr const uint8_t doubleMargin = singleMargin * 2;
+	constexpr const uint8_t extraMargin = singleMargin + 1;
+	constexpr const uint8_t doubleExtraMargin = extraMargin * 2;
+		
 	constexpr const uint8_t width = StringWidth(Strings::YouLose);
 	constexpr const uint8_t height = StringHeight(1);
 
 	constexpr const uint8_t x = CalculateCentreX(width);
+	constexpr const uint8_t y = CalculateCentreY(height);
 
-	arduboy.fillRect(x - 4, 16 - 4, width + 8, height + 8, Arduboy::ColourBlack);
-	arduboy.setCursor(x, 16);
+	arduboy.fillRect(x - extraMargin, y - extraMargin, width + doubleExtraMargin, height + doubleExtraMargin, Arduboy::ColourBlack);
+	arduboy.setCursor(x, y);
 	arduboy.print(AsFlashString(Strings::YouLose));
-	arduboy.drawRect(x - 4, 16 - 4, width + 8, height + 8, Arduboy::ColourWhite);
+	arduboy.drawRect(x - singleMargin, y - singleMargin, width + doubleMargin, height + doubleMargin, Arduboy::ColourWhite);
 }
 
 void GameplayState::renderRetry(Arduboy2 & arduboy)
