@@ -20,7 +20,7 @@ You can find a copy of the licence in `Graphics/BY-NC-SA.txt`.
 CC BY-NC-SA requires that you state the authorship of the original work.  
 Here you can find a list of who created which graphic, for attribution purposes.  
 
-Created by @vampirics:  
+Created by [vampirics](https://github.com/vampirics):  
 
 * `Tiles/Tile-Penguin-Small.png`
 * `LargeTiles/Tile-Penguin-Large.png`
@@ -45,7 +45,7 @@ Created by @vampirics:
 * `Icons/Icon-Sea.png`
 * `Icons/Icon-Turtle.png`
 
-Created by @Pharap:  
+Created by [Pharap](https://github.com/Pharap):  
 
 * `Logos/Title.png`
 * `Logos/Arrow-Down.png`
