@@ -27,7 +27,7 @@
 //#define LANGUAGE_DE_DE
 
 // Spanish
-//#define LANGUAGE_ES_ES
+//#define LANGUAGE_ES_CL
 
 // Joke languages
 
