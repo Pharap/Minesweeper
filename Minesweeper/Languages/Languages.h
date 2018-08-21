@@ -79,7 +79,7 @@ namespace location \
 #include "EN-AU.h"
 #include "EN-LCY.h"
 #include "FR-FR.h"
-#include "ES-LA.h"
+#include "ES-CL.h"
 #include "DE-DE.h"
 
 #undef BEGIN_LANGUAGE_VARIANT
@@ -135,8 +135,8 @@ namespace Strings
 		using namespace Languages::FR::FR;
 	#elif defined(LANGUAGE_DE_DE) || defined(LANGUAGE_DE)
 		using namespace Languages::DE::DE;
-	#elif defined(LANGUAGE_ES_LA) || defined(LANGUAGE_ES)
-		using namespace Languages::ES::LA;
+	#elif defined(LANGUAGE_ES_CL) || defined(LANGUAGE_ES)
+		using namespace Languages::ES::CL;
 	#else
 		using namespace Languages::EN::GB;
 		#warning "No language defined, defaulting to EN-GB."

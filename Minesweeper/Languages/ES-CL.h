@@ -4,7 +4,7 @@
 // Spanish localisation provided by Eried (https://github.com/eried)
 //
 
-BEGIN_LANGUAGE_VARIANT(ES, LA)
+BEGIN_LANGUAGE_VARIANT(ES, CL)
 
 // Titlescreen
 STRING_PLAY("Jugar")
