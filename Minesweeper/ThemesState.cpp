@@ -27,7 +27,8 @@ void ThemesState::update(StateMachine & machine)
 	
 	if (arduboy.justPressed(Arduboy::ButtonA) || arduboy.justPressed(Arduboy::ButtonB))
 	{
-		Context::SaveData::saveData(Context::stats);
+		if(Context::saveCheckEnabled)
+			Context::SaveData::saveData(Context::stats);
 		machine.changeState(GameStateType::TitleScreen);
 	}
 	
