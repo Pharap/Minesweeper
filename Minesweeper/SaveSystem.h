@@ -108,7 +108,7 @@ public:
 		
 		const size_t dataSize = static_cast<size_t>(Eeprom::read(DataSizeAddress));
 		
-		const ptrdiff_t availableStackSpace = getAvailableStackSpace();		
+		const ptrdiff_t availableStackSpace = getAvailableStackSpace();
 		if(availableStackSpace < 0 || dataSize >= static_cast<size_t>(availableStackSpace - usedSpace))
 			return false;
 
@@ -145,6 +145,13 @@ public:
 			dataSize = DataSize;
 			Eeprom::update(DataSizeAddress, DataSize);
 		}
+
+		// Used by checksum
+		constexpr size_t usedSpace = sizeof(uint32_t);
+		
+		const ptrdiff_t availableStackSpace = getAvailableStackSpace();
+		if(availableStackSpace < 0 || dataSize >= static_cast<size_t>(availableStackSpace - usedSpace))
+			return;
 
 		char buffer[dataSize];
 		Eeprom::read(DataStart, buffer, dataSize);
