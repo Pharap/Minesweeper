@@ -9,7 +9,7 @@ All other graphics are included and licenced.
 
 ## Licencing
 
-All graphics included are licenced under the Creative Commons Attribution-NonCommercial-ShareAlike licence ('CC BY-NC-SA').  
+All graphics included are licenced under the [Creative Commons Attribution-NonCommercial-ShareAlike licence 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) ('CC BY-NC-SA').  
 
 ![CC BY-NC-SA](https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.png)
 
