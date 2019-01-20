@@ -40,7 +40,7 @@ namespace Details
 	template< typename T >
 	struct ProgmemReadHelper<T, 1>
 	{
-		constexpr inline static T ProgmemRead(T const * const progmem)
+		inline static T ProgmemRead(T const * const progmem)
 		{
 			return static_cast<T>(pgm_read_byte(progmem));
 		}
@@ -49,7 +49,7 @@ namespace Details
 	template< typename T >
 	struct ProgmemReadHelper<T, 2>
 	{
-		constexpr inline static T ProgmemRead(T const * const progmem)
+		inline static T ProgmemRead(T const * const progmem)
 		{
 			return static_cast<T>(pgm_read_word(progmem));
 		}
@@ -58,7 +58,7 @@ namespace Details
 	template< typename T >
 	struct ProgmemReadHelper<T*, 2>
 	{
-		constexpr inline static T * ProgmemRead(T const * const * const progmem)
+		inline static T * ProgmemRead(T const * const * const progmem)
 		{
 			return reinterpret_cast<T *>(pgm_read_word(progmem));
 		}
