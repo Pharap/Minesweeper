@@ -32,12 +32,12 @@ public:
 	virtual void activate(StateMachine & machine)
 	{
 		// Get rid of 'unused parameter' warnings
-		(void)machine;
+		static_cast<void>(machine);
 	}
 	virtual void deactivate(StateMachine & machine)
 	{
 		// Get rid of 'unused parameter' warnings
-		(void)machine;
+		static_cast<void>(machine);
 	}
 	
 	virtual void update(StateMachine & machine) = 0;
