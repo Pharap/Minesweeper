@@ -16,22 +16,22 @@
 // limitations under the License.
 //
 
-bool Tile::isMine(void) const
+bool Tile::isMine() const
 {
 	return (this->value & isMineMask) != 0;
 }
 
-bool Tile::isVisible(void) const
+bool Tile::isVisible() const
 {
 	return (this->value & isVisibleMask) != 0;
 }
 
-bool Tile::isMarked(void) const
+bool Tile::isMarked() const
 {
 	return (this->value & isMarkedMask) != 0;
 }
 
-uint8_t Tile::getMineCount(void) const
+uint8_t Tile::getMineCount() const
 {
 	return (this->value & MineCountMask);	
 }
@@ -57,27 +57,27 @@ void Tile::setMineCount(const uint8_t & mineCount)
 	this->value |= (mineCount & MineCountMask);
 }
 
-void Tile::show(void)
+void Tile::show()
 {
 	this->value |= isVisibleMask;
 }
 	
-void Tile::hide(void)
+void Tile::hide()
 {
 	this->value &= ~isVisibleMask;
 }
 	
-void Tile::mark(void)
+void Tile::mark()
 {
 	this->value |= isMarkedMask;
 }
 	
-void Tile::unmark(void)
+void Tile::unmark()
 {
 	this->value &= ~isMarkedMask;
 }
 
-void Tile::toggleMark(void)
+void Tile::toggleMark()
 {
 	this->value ^= isMarkedMask;
 }

@@ -40,9 +40,9 @@ private:
 	}
 	
 public:	
-	constexpr uint16_t getCount(void) const;
-	constexpr uint8_t getWidth(void) const;
-	constexpr uint8_t getHeight(void) const;
+	constexpr uint16_t getCount() const;
+	constexpr uint8_t getWidth() const;
+	constexpr uint8_t getHeight() const;
 
 	T & getItem(const uint8_t & x, const uint8_t & y);
 	const T & getItem(const uint8_t & x, const uint8_t & y) const;
@@ -51,19 +51,19 @@ public:
 };
 
 template< typename T, uint8_t Width, uint8_t Height >
-constexpr uint16_t Grid<T, Width, Height>::getCount(void) const
+constexpr uint16_t Grid<T, Width, Height>::getCount() const
 {
 	return Grid<T, Width, Height>::Count;
 }
 	
 template< typename T, uint8_t Width, uint8_t Height >
-constexpr uint8_t Grid<T, Width, Height>::getWidth(void) const
+constexpr uint8_t Grid<T, Width, Height>::getWidth() const
 {
 	return Grid<T, Width, Height>::Width;
 }
 	
 template< typename T, uint8_t Width, uint8_t Height >
-constexpr uint8_t Grid<T, Width, Height>::getHeight(void) const
+constexpr uint8_t Grid<T, Width, Height>::getHeight() const
 {
 	return Grid<T, Width, Height>::Height;
 }

@@ -30,20 +30,20 @@ private:
 	uint8_t value;
 
 public:
-	bool isMine(void) const;
-	bool isVisible(void) const;
-	bool isMarked(void) const;
-	uint8_t getMineCount(void) const;
+	bool isMine() const;
+	bool isVisible() const;
+	bool isMarked() const;
+	uint8_t getMineCount() const;
 	
 	void setIsMine(const bool & isMine);
 	void setIsVisible(const bool & isVisible);
 	void setIsMarked(const bool & isMarked);
 	void setMineCount(const uint8_t & mineCount);
 
-	void show(void);
-	void hide(void);
-	void mark(void);
-	void unmark(void);
+	void show();
+	void hide();
+	void mark();
+	void unmark();
 	
-	void toggleMark(void);
+	void toggleMark();
 };

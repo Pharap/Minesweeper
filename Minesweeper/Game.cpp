@@ -27,7 +27,7 @@
 #include "SaveCheckState.h"
 #endif
 
-void Game::setup(void)
+void Game::setup()
 {
 	auto & arduboy = this->context.arduboy;
 
@@ -41,7 +41,7 @@ void Game::setup(void)
 	this->currentState->activate(*this);
 }
 
-void Game::loop(void)
+void Game::loop()
 {
 	auto & arduboy = this->context.arduboy;
 
@@ -77,12 +77,12 @@ void Game::loop(void)
 	}
 }
 
-Game::Context & Game::getContext(void)
+Game::Context & Game::getContext()
 {
 	return this->context;
 }
 
-const Game::Context & Game::getContext(void) const
+const Game::Context & Game::getContext() const
 {
 	return this->context;
 }

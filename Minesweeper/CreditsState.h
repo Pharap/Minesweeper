@@ -35,7 +35,7 @@ private:
 		char const * const * Entries;
 		uint8_t EntryCount;
 
-		Category(void) = default;
+		Category() = default;
 
 		template< size_t Size >
 		constexpr Category(char const title[], char const * const (&entries)[Size])

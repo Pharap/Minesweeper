@@ -59,11 +59,11 @@ private:
 	char stateData[sizeof(StateData)];
 	
 public:
-	void setup(void);
-	void loop(void);
+	void setup();
+	void loop();
 
-	Context & getContext(void) override;
-	const Context & getContext(void) const override;
+	Context & getContext() override;
+	const Context & getContext() const override;
 
 	void changeState(const StateId & stateId) override;
 

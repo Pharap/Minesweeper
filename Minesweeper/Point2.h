@@ -24,7 +24,7 @@ public:
 	T Y;
 
 public:
-	Point2(void);
+	Point2();
 	Point2(const T & x, const T & y);
 };
 
@@ -46,7 +46,7 @@ bool operator !=(const Point2<T> & left, const Point2<T> & right)
 
 
 template< typename T >
-Point2<T>::Point2(void)
+Point2<T>::Point2()
 	: X(), Y()
 {
 }

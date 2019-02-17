@@ -18,7 +18,7 @@
 
 #include <Arduboy2.h>
 
-inline unsigned long generateRandomSeed(void)
+inline unsigned long generateRandomSeed()
 {
 	power_adc_enable(); // ADC on
 
