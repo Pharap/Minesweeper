@@ -27,50 +27,50 @@ private:
 	uint8_t next;
 	
 public:
-	uint8_t getCapacity(void) const;
-	uint8_t getCount(void) const;
+	uint8_t getCapacity() const;
+	uint8_t getCount() const;
 	
-	bool isEmpty(void) const;
-	bool isFull(void) const;
+	bool isEmpty() const;
+	bool isFull() const;
 	
-	const T & peek(void) const;
-	T && pull(void);
+	const T & peek() const;
+	T && pull();
 	bool push(const T & item);
 };
 
 
 template< typename T, uint8_t Capacity >
-uint8_t Stack<T, Capacity>::getCapacity(void) const
+uint8_t Stack<T, Capacity>::getCapacity() const
 {
 	return capacity;
 }
 
 template< typename T, uint8_t Capacity >
-uint8_t Stack<T, Capacity>::getCount(void) const
+uint8_t Stack<T, Capacity>::getCount() const
 {
 	return this->next;
 }
 
 template< typename T, uint8_t Capacity >
-bool Stack<T, Capacity>::isEmpty(void) const
+bool Stack<T, Capacity>::isEmpty() const
 {
 	return (this->next == 0);
 }
 
 template< typename T, uint8_t Capacity >
-bool Stack<T, Capacity>::isFull(void) const
+bool Stack<T, Capacity>::isFull() const
 {
 	return (this->next == capacity);
 }
 
 template< typename T, uint8_t Capacity >
-const T & Stack<T, Capacity>::peek(void) const
+const T & Stack<T, Capacity>::peek() const
 {
 	return this->items[this->next - 1];
 }
 
 template< typename T, uint8_t Capacity >
-T && Stack<T, Capacity>::pull(void)
+T && Stack<T, Capacity>::pull()
 {
 	--this->next;
 	return static_cast<T&&>(this->items[this->next]);

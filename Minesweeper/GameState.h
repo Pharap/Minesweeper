@@ -27,7 +27,7 @@ public:
 	using StateMachine = GameStateMachine<Context, StateId>;
 
 public:
-	virtual ~GameState(void) {};
+	virtual ~GameState() {};
 
 	virtual void activate(StateMachine & machine)
 	{

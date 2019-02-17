@@ -28,10 +28,10 @@ public:
 	using State = GameState<Context, StateId>;
 
 public:
-	virtual ~GameStateMachine(void) {}
+	virtual ~GameStateMachine() {}
 
-	virtual Context & getContext(void) = 0;
-	virtual const Context & getContext(void) const = 0;
+	virtual Context & getContext() = 0;
+	virtual const Context & getContext() const = 0;
 
 	virtual void changeState(const StateId & stateId) = 0;
 };

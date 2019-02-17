@@ -25,7 +25,7 @@ template< typename TChecksum, size_t EeepromCapacityValue, size_t SaveStartValue
 class SaveSystem
 {
 public:
-	SaveSystem(void) = delete;
+	SaveSystem() = delete;
 
 public:
 	using ChecksumType = TChecksum;
@@ -86,7 +86,7 @@ public:
 	}
 
 	// Calculate the checksum from the data in EEPROM
-	static uint32_t calculateChecksum(void)
+	static uint32_t calculateChecksum()
 	{
 		const size_t dataSize = static_cast<size_t>(Eeprom::read(DataSizeAddress));
 		
@@ -101,7 +101,7 @@ public:
 	}
 
 	// Verify the file checksum
-	static bool verifyChecksum(void)
+	static bool verifyChecksum()
 	{
 		// Used by checksum and savedChecksum
 		constexpr size_t usedSpace = sizeof(uint32_t) * 2;
@@ -122,7 +122,7 @@ public:
 	}
 
 	// Load the data
-	static DataType loadData(void)
+	static DataType loadData()
 	{
 		const uint16_t dataSize = Eeprom::read(DataSizeAddress);
 		const size_t limit = (dataSize < DataSize) ? dataSize : DataSize;

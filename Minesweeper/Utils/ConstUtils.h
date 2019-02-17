@@ -48,13 +48,13 @@ namespace Details
 }
 
 template< typename T, T ... Ts >
-constexpr T MaxValue(void)
+constexpr T MaxValue()
 {
 	return Details::MaxValueHelper<T, Ts ...>::Value;
 }
 
 template< typename T, T ... Ts >
-constexpr T MinValue(void)
+constexpr T MinValue()
 {
 	return Details::MinValueHelper<T, Ts ...>::Value;
 }

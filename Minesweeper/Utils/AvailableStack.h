@@ -27,7 +27,7 @@
 // and as of this file's creation neither repo has a licence.
 //
 
-inline ptrdiff_t getAvailableStackSpace(void)
+inline ptrdiff_t getAvailableStackSpace()
 {
 	extern int __heap_start;
 	extern int * __brkval; 

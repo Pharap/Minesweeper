@@ -37,7 +37,7 @@ private:
 	uint8_t optionIndex = 1;
 
 public:
-	ConfirmationMenu(void) = default;
+	ConfirmationMenu() = default;
 
 	ConfirmationOption update(Arduboy2 & arduboy)
 	{
