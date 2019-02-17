@@ -33,7 +33,7 @@ inline ptrdiff_t getAvailableStackSpace(void)
 	extern int * __brkval; 
 	
 	const int stackTop = 0;
-	(void)stackTop;
+	static_cast<void>(stackTop);
 	
 	return static_cast<ptrdiff_t>(&stackTop - ((__brkval == 0) ? &__heap_start : __brkval));
 }

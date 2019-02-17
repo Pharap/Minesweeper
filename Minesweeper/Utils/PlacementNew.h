@@ -28,6 +28,6 @@
 
 inline void * operator new (size_t size, void * pointer)
 {
-	(void)size;
+	static_cast<void>(size);
 	return pointer;
 }
