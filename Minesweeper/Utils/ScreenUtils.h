@@ -19,10 +19,10 @@
 #include "Arduboy2PrettificationUtils.h"
 #include "Type.h"
 
-constexpr const static uint8_t ScreenWidth = Arduboy::ScreenWidth;
-constexpr const static uint8_t ScreenHeight = Arduboy::ScreenHeight;
-constexpr const static uint8_t HalfScreenWidth = (ScreenWidth / 2);
-constexpr const static uint8_t HalfScreenHeight = (ScreenHeight / 2);
+constexpr static uint8_t ScreenWidth = Arduboy::ScreenWidth;
+constexpr static uint8_t ScreenHeight = Arduboy::ScreenHeight;
+constexpr static uint8_t HalfScreenWidth = (ScreenWidth / 2);
+constexpr static uint8_t HalfScreenHeight = (ScreenHeight / 2);
 
 template< typename Type >
 constexpr Type intRound(const Type & value)

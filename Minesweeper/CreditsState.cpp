@@ -91,15 +91,15 @@ void CreditsState::render(StateMachine & machine)
 {
 	auto & arduboy = machine.getContext().arduboy;
 	
-	constexpr const uint8_t border = 4;
-	constexpr const uint8_t indent = FontCharWidth + 1;
-	constexpr const uint8_t step = FontCharHeight + 1;
+	constexpr uint8_t border = 4;
+	constexpr uint8_t indent = FontCharWidth + 1;
+	constexpr uint8_t step = FontCharHeight + 1;
 
 	int16_t y = border - this->offset;
 
 	// Draw the title
 	{
-		constexpr const uint16_t x = CalculateCentreX(StringWidth(Strings::Credits));
+		constexpr uint16_t x = CalculateCentreX(StringWidth(Strings::Credits));
 		arduboy.setCursor(x, y);
 		arduboy.print(AsFlashString(Strings::Credits));
 		y += step + border;
@@ -107,14 +107,14 @@ void CreditsState::render(StateMachine & machine)
 
 	// Draw the logo
 	{
-		constexpr const uint16_t x = CalculateCentreX(Images::PharapLogoWidth);
+		constexpr uint16_t x = CalculateCentreX(Images::PharapLogoWidth);
 		Sprites::drawOverwrite(x, y, Images::PharapLogo, 0);
 		y += Images::PharapLogoHeight + border;
 	}
 
 	// Draw the credits
 	{
-		constexpr const uint8_t x = border;
+		constexpr uint8_t x = border;
 				
 		for (uint8_t i = 0; i < ArrayLength(Categories) && (y < ScreenHeight); ++i, y += step)
 		{
@@ -143,7 +143,7 @@ void CreditsState::render(StateMachine & machine)
 
 		constexpr static const uint8_t ScrollMax = (ScrollMaxLines * FontLineHeight);
 
-		constexpr const uint8_t x = Arduboy::ScreenWidth - Images::ArrowWidth;
+		constexpr uint8_t x = Arduboy::ScreenWidth - Images::ArrowWidth;
 
 		if (this->offset > 0)
 		{
@@ -152,7 +152,7 @@ void CreditsState::render(StateMachine & machine)
 
 		if (this->offset < ScrollMax)
 		{
-			constexpr const uint8_t y = Arduboy::ScreenHeight - Images::ArrowHeight;
+			constexpr uint8_t y = Arduboy::ScreenHeight - Images::ArrowHeight;
 			Sprites::drawOverwrite(x, y, Images::Arrows, 1);
 		}
 	}

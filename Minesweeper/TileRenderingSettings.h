@@ -20,12 +20,12 @@
 
 struct TileRenderingSettings
 {
-	constexpr const static uint8_t TileXBorder = 1;
-	constexpr const static uint8_t TileYBorder = 1;
+	constexpr static uint8_t TileXBorder = 1;
+	constexpr static uint8_t TileYBorder = 1;
 	
-	constexpr const static uint8_t TileWidth = Images::TileFrameWidth;
-	constexpr const static uint8_t TileHeight = Images::TileFrameWidth;
+	constexpr static uint8_t TileWidth = Images::TileFrameWidth;
+	constexpr static uint8_t TileHeight = Images::TileFrameWidth;
 	
-	constexpr const static uint8_t LargeTileWidth = Images::LargeTileFrameWidth;
-	constexpr const static uint8_t LargeTileHeight = Images::LargeTileFrameWidth;
+	constexpr static uint8_t LargeTileWidth = Images::LargeTileFrameWidth;
+	constexpr static uint8_t LargeTileHeight = Images::LargeTileFrameWidth;
 };
