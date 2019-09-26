@@ -89,8 +89,8 @@ void SplashScreenState::render(StateMachine & machine)
 	auto & arduboy = machine.getContext().arduboy;
 	
 	{
-		constexpr const uint8_t x = CalculateCentreX(Images::PharapLogoWidth);
-		constexpr const uint8_t y = CalculateCentreY(Images::PharapLogoHeight);
+		constexpr uint8_t x = CalculateCentreX(Images::PharapLogoWidth);
+		constexpr uint8_t y = CalculateCentreY(Images::PharapLogoHeight);
 
 		Sprites::drawOverwrite(x, y, Images::PharapLogo, 0);
 		arduboy.fillRect(x + 14, y + 15, 20, this->blinkTick, Arduboy::ColourWhite);
@@ -98,10 +98,10 @@ void SplashScreenState::render(StateMachine & machine)
 	}
 
 	/*{
-		constexpr const uint8_t width = StringWidth(StringProgrammer0);
-		constexpr const uint8_t height = FontCharHeight;
+		constexpr uint8_t width = StringWidth(StringProgrammer0);
+		constexpr uint8_t height = FontCharHeight;
 
-		constexpr const uint8_t x = CalculateCentreX(width);
+		constexpr uint8_t x = CalculateCentreX(width);
 
 		auto & arduboy = machine.getContext().arduboy;
 

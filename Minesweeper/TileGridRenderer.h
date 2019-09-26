@@ -32,14 +32,14 @@
 class TileGridRenderer
 {
 public:
-	constexpr const static uint8_t TileXBorder = TileRenderingSettings::TileXBorder;
-	constexpr const static uint8_t TileYBorder = TileRenderingSettings::TileYBorder;
+	constexpr static uint8_t TileXBorder = TileRenderingSettings::TileXBorder;
+	constexpr static uint8_t TileYBorder = TileRenderingSettings::TileYBorder;
 	
-	constexpr const static uint8_t TileWidth = TileRenderingSettings::TileWidth;
-	constexpr const static uint8_t TileHeight = TileRenderingSettings::TileHeight;
+	constexpr static uint8_t TileWidth = TileRenderingSettings::TileWidth;
+	constexpr static uint8_t TileHeight = TileRenderingSettings::TileHeight;
 	
-	constexpr const static uint8_t LargeTileWidth = TileRenderingSettings::LargeTileWidth;
-	constexpr const static uint8_t LargeTileHeight = TileRenderingSettings::LargeTileHeight;
+	constexpr static uint8_t LargeTileWidth = TileRenderingSettings::LargeTileWidth;
+	constexpr static uint8_t LargeTileHeight = TileRenderingSettings::LargeTileHeight;
 
 public:
 	template< uint8_t Width, uint8_t Height >

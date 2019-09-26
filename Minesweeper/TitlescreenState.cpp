@@ -30,9 +30,9 @@ const TitleScreenState::Option TitleScreenState::Options[] PROGMEM =
 
 void TitleScreenState::update(StateMachine & machine)
 {
-	constexpr const static uint8_t MinOption = 0;
-	constexpr const static uint8_t OptionCount = ArrayLength(Options);
-	constexpr const static uint8_t MaxOption = (MinOption + OptionCount) - 1;
+	constexpr static uint8_t MinOption = 0;
+	constexpr static uint8_t OptionCount = ArrayLength(Options);
+	constexpr static uint8_t MaxOption = (MinOption + OptionCount) - 1;
 
 	auto & arduboy = machine.getContext().arduboy;
 	
@@ -65,19 +65,19 @@ void TitleScreenState::render(StateMachine & machine)
 
 	// Draw options
 	{
-		constexpr const uint8_t maxWidth =
+		constexpr uint8_t maxWidth =
 			MaxValue<uint8_t,
 			StringWidth(Strings::Play),
 			StringWidth(Strings::Credits),
 			StringWidth(Strings::Stats)
 			>();
 
-		constexpr const uint8_t step = FontCharHeight + 2;
-		constexpr const uint8_t x = CalculateCentreX(maxWidth);
-		constexpr const uint8_t yBase = Images::TitleHeight + 4;
+		constexpr uint8_t step = FontCharHeight + 2;
+		constexpr uint8_t x = CalculateCentreX(maxWidth);
+		constexpr uint8_t yBase = Images::TitleHeight + 4;
 
-		constexpr const static uint8_t MinOption = 0;
-		constexpr const static uint8_t OptionCount = ArrayLength(Options);
+		constexpr static uint8_t MinOption = 0;
+		constexpr static uint8_t OptionCount = ArrayLength(Options);
 
 		uint8_t y = yBase;
 

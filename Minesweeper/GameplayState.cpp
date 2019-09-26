@@ -206,16 +206,16 @@ void GameplayState::render(StateMachine & machine)
 
 void GameplayState::renderWin(Arduboy2 & arduboy)
 {
-	constexpr const uint8_t singleMargin = 4;
-	constexpr const uint8_t doubleMargin = singleMargin * 2;
-	constexpr const uint8_t extraMargin = singleMargin + 1;
-	constexpr const uint8_t doubleExtraMargin = extraMargin * 2;
+	constexpr uint8_t singleMargin = 4;
+	constexpr uint8_t doubleMargin = singleMargin * 2;
+	constexpr uint8_t extraMargin = singleMargin + 1;
+	constexpr uint8_t doubleExtraMargin = extraMargin * 2;
 		
-	constexpr const uint8_t width = StringWidth(Strings::YouWin);
-	constexpr const uint8_t height = StringHeight(1);
+	constexpr uint8_t width = StringWidth(Strings::YouWin);
+	constexpr uint8_t height = StringHeight(1);
 
-	constexpr const uint8_t x = CalculateCentreX(width);
-	constexpr const uint8_t y = CalculateCentreY(height);
+	constexpr uint8_t x = CalculateCentreX(width);
+	constexpr uint8_t y = CalculateCentreY(height);
 
 	arduboy.fillRect(x - extraMargin, y - extraMargin, width + doubleExtraMargin, height + doubleExtraMargin, Arduboy::ColourBlack);
 	arduboy.setCursor(x, y);
@@ -225,16 +225,16 @@ void GameplayState::renderWin(Arduboy2 & arduboy)
 
 void GameplayState::renderLoss(Arduboy2 & arduboy)
 {
-	constexpr const uint8_t singleMargin = 4;
-	constexpr const uint8_t doubleMargin = singleMargin * 2;
-	constexpr const uint8_t extraMargin = singleMargin + 1;
-	constexpr const uint8_t doubleExtraMargin = extraMargin * 2;
+	constexpr uint8_t singleMargin = 4;
+	constexpr uint8_t doubleMargin = singleMargin * 2;
+	constexpr uint8_t extraMargin = singleMargin + 1;
+	constexpr uint8_t doubleExtraMargin = extraMargin * 2;
 		
-	constexpr const uint8_t width = StringWidth(Strings::YouLose);
-	constexpr const uint8_t height = StringHeight(1);
+	constexpr uint8_t width = StringWidth(Strings::YouLose);
+	constexpr uint8_t height = StringHeight(1);
 
-	constexpr const uint8_t x = CalculateCentreX(width);
-	constexpr const uint8_t y = CalculateCentreY(height);
+	constexpr uint8_t x = CalculateCentreX(width);
+	constexpr uint8_t y = CalculateCentreY(height);
 
 	arduboy.fillRect(x - extraMargin, y - extraMargin, width + doubleExtraMargin, height + doubleExtraMargin, Arduboy::ColourBlack);
 	arduboy.setCursor(x, y);

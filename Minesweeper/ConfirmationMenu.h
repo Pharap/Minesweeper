@@ -68,20 +68,20 @@ public:
 
 	void render(Arduboy2 & arduboy)
 	{
-		constexpr const uint8_t singleMargin = 4;
-		constexpr const uint8_t doubleMargin = singleMargin * 2;
-		constexpr const uint8_t extraMargin = singleMargin + 1;
-		constexpr const uint8_t doubleExtraMargin = extraMargin * 2;
+		constexpr uint8_t singleMargin = 4;
+		constexpr uint8_t doubleMargin = singleMargin * 2;
+		constexpr uint8_t extraMargin = singleMargin + 1;
+		constexpr uint8_t doubleExtraMargin = extraMargin * 2;
 	
-		constexpr const uint8_t width = defaultWidth;
-		constexpr const uint8_t widthWithMargin = width + doubleMargin;
-		constexpr const uint8_t x = CalculateCentreX((widthWithMargin < Arduboy::ScreenWidth) ? width : (Arduboy::ScreenWidth - doubleMargin));
+		constexpr uint8_t width = defaultWidth;
+		constexpr uint8_t widthWithMargin = width + doubleMargin;
+		constexpr uint8_t x = CalculateCentreX((widthWithMargin < Arduboy::ScreenWidth) ? width : (Arduboy::ScreenWidth - doubleMargin));
 
-		constexpr const uint8_t height = StringHeight(2);
-		constexpr const uint8_t heightWithMargin = height + doubleMargin;
+		constexpr uint8_t height = StringHeight(2);
+		constexpr uint8_t heightWithMargin = height + doubleMargin;
 
-		constexpr const uint8_t yBase = CalculateCentreY((heightWithMargin < Arduboy::ScreenHeight) ? height : (Arduboy::ScreenHeight - doubleMargin));
-		constexpr const uint8_t yStep = FontLineHeight;
+		constexpr uint8_t yBase = CalculateCentreY((heightWithMargin < Arduboy::ScreenHeight) ? height : (Arduboy::ScreenHeight - doubleMargin));
+		constexpr uint8_t yStep = FontLineHeight;
 
 		arduboy.fillRect(x - extraMargin, yBase - extraMargin, width + doubleExtraMargin, height + doubleExtraMargin, Arduboy::ColourBlack);
 
@@ -102,21 +102,21 @@ public:
 	template< size_t Size >
 	void render(Arduboy2 & arduboy, const char (&progmemString)[Size])
 	{
-		constexpr const uint8_t singleMargin = 4;
-		constexpr const uint8_t doubleMargin = singleMargin * 2;
-		constexpr const uint8_t extraMargin = singleMargin + 1;
-		constexpr const uint8_t doubleExtraMargin = extraMargin * 2;
+		constexpr uint8_t singleMargin = 4;
+		constexpr uint8_t doubleMargin = singleMargin * 2;
+		constexpr uint8_t extraMargin = singleMargin + 1;
+		constexpr uint8_t doubleExtraMargin = extraMargin * 2;
 	
-		constexpr const uint8_t stringWidth = StringWidth(Size - 1);
-		constexpr const uint8_t width = (stringWidth > defaultWidth) ? stringWidth : defaultWidth;
-		constexpr const uint8_t widthWithMargin = width + doubleMargin;
-		constexpr const uint8_t x = CalculateCentreX((widthWithMargin < Arduboy::ScreenWidth) ? width : (Arduboy::ScreenWidth - doubleMargin));
+		constexpr uint8_t stringWidth = StringWidth(Size - 1);
+		constexpr uint8_t width = (stringWidth > defaultWidth) ? stringWidth : defaultWidth;
+		constexpr uint8_t widthWithMargin = width + doubleMargin;
+		constexpr uint8_t x = CalculateCentreX((widthWithMargin < Arduboy::ScreenWidth) ? width : (Arduboy::ScreenWidth - doubleMargin));
 
-		constexpr const uint8_t height = StringHeight(3);
-		constexpr const uint8_t heightWithMargin = height + doubleMargin;
+		constexpr uint8_t height = StringHeight(3);
+		constexpr uint8_t heightWithMargin = height + doubleMargin;
 
-		constexpr const uint8_t yBase = CalculateCentreY((heightWithMargin < Arduboy::ScreenHeight) ? height : (Arduboy::ScreenHeight - doubleMargin));
-		constexpr const uint8_t yStep = FontLineHeight;
+		constexpr uint8_t yBase = CalculateCentreY((heightWithMargin < Arduboy::ScreenHeight) ? height : (Arduboy::ScreenHeight - doubleMargin));
+		constexpr uint8_t yStep = FontLineHeight;
 
 		arduboy.fillRect(x - extraMargin, yBase - extraMargin, width + doubleExtraMargin, height + doubleExtraMargin, Arduboy::ColourBlack);
 

@@ -58,19 +58,19 @@ void StatsState::render(StateMachine & machine)
 	auto & context = machine.getContext();
 	auto & arduboy = context.arduboy;
 
-	constexpr const uint8_t step = FontCharHeight + 1;
+	constexpr uint8_t step = FontCharHeight + 1;
 
 	uint8_t y = 4;
 
 	{
-		constexpr const uint8_t width = StringWidth(Strings::Stats);
-		constexpr const uint8_t x = CalculateCentreX(width);
+		constexpr uint8_t width = StringWidth(Strings::Stats);
+		constexpr uint8_t x = CalculateCentreX(width);
 		arduboy.setCursor(x, y);
 		arduboy.print(AsFlashString(Strings::Stats));
 	}
 
 	{
-		constexpr const uint8_t x = 4;
+		constexpr uint8_t x = 4;
 
 		y += step;
 		arduboy.setCursor(x, y);

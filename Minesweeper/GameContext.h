@@ -30,18 +30,18 @@ public:
 	using SaveData = SaveSystem<Checksum<SkullHash>, 1024, 512, GameStats>;
 
 public:
-	constexpr const static uint8_t Width = 7;
-	constexpr const static uint8_t Height = 7;
+	constexpr static uint8_t Width = 7;
+	constexpr static uint8_t Height = 7;
 
 	Arduboy2 arduboy;
 
-	constexpr const static uint8_t FirstThemeIndex = 0;
-	constexpr const static uint8_t LastThemeIndex = 4;
+	constexpr static uint8_t FirstThemeIndex = 0;
+	constexpr static uint8_t LastThemeIndex = 4;
 
 	static GameStats stats;
 
 #if DISABLE_SAVE_CHECK
-	constexpr const static bool saveCheckEnabled = true;
+	constexpr static bool saveCheckEnabled = true;
 #else
 	static bool saveCheckEnabled;
 #endif
