@@ -20,6 +20,10 @@
 
 struct SkullHash
 {
+	// This is actually part of the algorithm for an 'Xorshift' PRNG variant.
+	// PRNG algorithms that have a single-value state can be easily repurposed as hash functions.
+	// The shift values are taken from page 4 of George Marsaglia's 'Xorshift RNGs'.
+	// Marsaglia's 'Xorshift RNGs': https://www.jstatsoft.org/article/view/v008i14
 	static uint32_t hash(uint32_t value)
 	{
 		value ^= (value << 13);
