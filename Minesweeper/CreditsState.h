@@ -52,7 +52,7 @@ private:
 
 	static const Category Categories[];
 
-	constexpr static const uint8_t ScrollDelay = 25;
+	static constexpr const uint8_t ScrollDelay = 25;
 
 private:
 	uint8_t offset;

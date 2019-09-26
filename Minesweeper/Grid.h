@@ -22,14 +22,14 @@ class Grid
 public:
 
 public:
-	constexpr static const uint16_t Width = WidthValue;
-	constexpr static const uint16_t Height = HeightValue;
-	constexpr static const uint16_t Count = static_cast<uint16_t>(Width) * static_cast<uint16_t>(Height);
+	static constexpr const uint16_t Width = WidthValue;
+	static constexpr const uint16_t Height = HeightValue;
+	static constexpr const uint16_t Count = static_cast<uint16_t>(Width) * static_cast<uint16_t>(Height);
 
-	constexpr static const uint8_t FirstX = 0;
-	constexpr static const uint8_t FirstY = 0;
-	constexpr static const uint8_t LastX = (Width > 0) ? (Width - 1) : 0;
-	constexpr static const uint8_t LastY = (Height > 0) ? (Height - 1) : 0;
+	static constexpr const uint8_t FirstX = 0;
+	static constexpr const uint8_t FirstY = 0;
+	static constexpr const uint8_t LastX = (Width > 0) ? (Width - 1) : 0;
+	static constexpr const uint8_t LastY = (Height > 0) ? (Height - 1) : 0;
 
 private:
 	T items[Count];

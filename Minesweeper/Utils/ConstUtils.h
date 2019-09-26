@@ -24,7 +24,7 @@ namespace Details
 	template< typename T, T A, T B>
 	struct MaxValueHelper<T, A, B>
 	{
-		constexpr static T Value = (A > B) ? A : B;
+		static constexpr T Value = (A > B) ? A : B;
 	};
 
 	template< typename T, T A, T B, T ... Ts>
@@ -38,7 +38,7 @@ namespace Details
 	template< typename T, T A, T B>
 	struct MinValueHelper<T, A, B>
 	{
-		constexpr static T Value = (A < B) ? A : B;
+		static constexpr T Value = (A < B) ? A : B;
 	};
 
 	template< typename T, T A, T B, T ... Ts>

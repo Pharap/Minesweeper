@@ -32,26 +32,26 @@ private:
 
 	using TileGrid = Grid<Tile, GameContext::Width, GameContext::Height>;
 
-	constexpr static uint8_t Width = TileGrid::Width;
-	constexpr static uint8_t Height = TileGrid::Height;
-	constexpr static uint16_t TileCount = TileGrid::Count;
+	static constexpr uint8_t Width = TileGrid::Width;
+	static constexpr uint8_t Height = TileGrid::Height;
+	static constexpr uint16_t TileCount = TileGrid::Count;
 
 public:
 	using RenderingSettings = TileRenderingSettings;
 
 private:
 
-	constexpr static uint8_t TileWidth = RenderingSettings::TileWidth;
-	constexpr static uint8_t TileHeight = RenderingSettings::TileHeight;
+	static constexpr uint8_t TileWidth = RenderingSettings::TileWidth;
+	static constexpr uint8_t TileHeight = RenderingSettings::TileHeight;
 
-	constexpr static uint8_t TileXBorder = RenderingSettings::TileXBorder;
-	constexpr static uint8_t TileYBorder = RenderingSettings::TileYBorder;
+	static constexpr uint8_t TileXBorder = RenderingSettings::TileXBorder;
+	static constexpr uint8_t TileYBorder = RenderingSettings::TileYBorder;
 
-	constexpr static uint8_t LargeTileWidth = RenderingSettings::LargeTileWidth;
-	constexpr static uint8_t LargeTileHeight = RenderingSettings::LargeTileHeight;
+	static constexpr uint8_t LargeTileWidth = RenderingSettings::LargeTileWidth;
+	static constexpr uint8_t LargeTileHeight = RenderingSettings::LargeTileHeight;
 
-	constexpr static uint8_t VisibleGridWidth = TileXBorder + (TileWidth * Width) + (TileXBorder * Width);
-	constexpr static uint8_t VisibleGridHeight = TileYBorder + (TileWidth * Height) + (TileYBorder * Height);
+	static constexpr uint8_t VisibleGridWidth = TileXBorder + (TileWidth * Width) + (TileXBorder * Width);
+	static constexpr uint8_t VisibleGridHeight = TileYBorder + (TileWidth * Height) + (TileYBorder * Height);
 
 private:
 	TileGrid tiles;

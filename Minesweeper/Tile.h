@@ -21,10 +21,10 @@
 class Tile
 {
 private:
-	constexpr static uint8_t isMineMask = 1 << 4;
-	constexpr static uint8_t isVisibleMask = 1 << 5;
-	constexpr static uint8_t isMarkedMask = 1 << 6;
-	constexpr static uint8_t MineCountMask = 0x0F;
+	static constexpr uint8_t isMineMask = 1 << 4;
+	static constexpr uint8_t isVisibleMask = 1 << 5;
+	static constexpr uint8_t isMarkedMask = 1 << 6;
+	static constexpr uint8_t MineCountMask = 0x0F;
 
 private:
 	uint8_t value;
