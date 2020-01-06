@@ -95,7 +95,7 @@ void GameplayState::update(StateMachine & machine)
 						this->revealAllMines(this->tiles);
 						++Context::stats.losses;
 						if (Context::saveCheckEnabled)
-							Context::SaveData::saveData(Context::stats);
+							Context::SaveData::saveData(Context::stats, Arduboy2Base::sBuffer);
 					}
 					else if(tile.getMineCount() == 0)
 					{
@@ -115,7 +115,7 @@ void GameplayState::update(StateMachine & machine)
 				this->revealAllMines(this->tiles);
 				++Context::stats.wins;
 				if (Context::saveCheckEnabled)
-					Context::SaveData::saveData(Context::stats);
+					Context::SaveData::saveData(Context::stats, Arduboy2Base::sBuffer);
 			}
 		}
 		break;

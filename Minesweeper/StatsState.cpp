@@ -35,7 +35,7 @@ void StatsState::update(StateMachine & machine)
 			{
 				Context::stats.wins = 0;
 				Context::stats.losses = 0;
-				Context::SaveData::saveData(Context::stats);
+				Context::SaveData::saveData(Context::stats, Arduboy2Base::sBuffer);
 				this->cleared = true;
 			}
 
