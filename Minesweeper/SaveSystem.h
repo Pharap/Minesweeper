@@ -21,7 +21,7 @@
 
 #include "Utils.h"
 
-template< typename TChecksum, size_t EeepromCapacityValue, size_t SaveStartValue, typename TData >
+template< typename TChecksum, size_t EeepromCapacityValue, uintptr_t SaveStartValue, typename TData >
 class SaveSystem
 {
 public:
@@ -46,31 +46,23 @@ public:
 public:
 	static constexpr size_t EepromCapacity = EeepromCapacityValue;
 
-	static constexpr size_t SaveStart = SaveStartValue;
+	static constexpr uintptr_t SaveStart = SaveStartValue;
 	static constexpr size_t SaveSize = sizeof(SaveBlock);
 
-	static constexpr size_t HeaderStart = SaveStart;
+	static constexpr uintptr_t HeaderStart = SaveStart;
 	static constexpr size_t HeaderSize = sizeof(Header);
 	
-	static constexpr size_t ChecksumStart = SaveStart;
+	static constexpr uintptr_t ChecksumStart = SaveStart;
 	static constexpr size_t ChecksumSize = sizeof(uint32_t);
 
-	static constexpr size_t DataSizeStart = ChecksumStart + ChecksumSize;
+	static constexpr uintptr_t DataSizeStart = ChecksumStart + ChecksumSize;
 	static constexpr size_t DataSizeSize = sizeof(uint16_t);
 
-	static constexpr size_t DataStart = DataSizeStart + DataSizeSize;
+	static constexpr uintptr_t DataStart = DataSizeStart + DataSizeSize;
 	static constexpr size_t DataSize = sizeof(DataType);
 
 	static_assert(SaveSize <= EepromCapacity, "Save size is larger than the EEPROM capacity");
 	static_assert(SaveStart + SaveSize <= EepromCapacity, "The save size can't fit at the provided offset");
-
-private:
-	static constexpr SaveBlock * SaveAddress = reinterpret_cast<SaveBlock *>(SaveStart);
-	static constexpr Header * HeaderAddress = reinterpret_cast<Header *>(HeaderStart);
-	static constexpr DataType * DataAddress = reinterpret_cast<DataType *>(DataStart);
-
-	static constexpr uint32_t * ChecksumAddress = reinterpret_cast<uint32_t *>(ChecksumStart);
-	static constexpr uint16_t * DataSizeAddress = reinterpret_cast<uint16_t *>(DataSizeStart);
 
 public:
 	// Initialise the save data when there's no save file
@@ -82,13 +74,13 @@ public:
 		saveBlock.header.dataSize = DataSize;
 		saveBlock.header.checksum = ChecksumType::calculateChecksum(saveBlock.data);
 
-		Eeprom::update(SaveAddress, saveBlock);
+		Eeprom::update(SaveStart, saveBlock);
 	}
 
 	// Calculate the checksum from the data in EEPROM
 	static uint32_t calculateChecksum()
 	{
-		const size_t dataSize = static_cast<size_t>(Eeprom::read(DataSizeAddress));
+		const size_t dataSize = static_cast<size_t>(Eeprom::read<uint16_t>(DataSizeStart));
 		
 		const ptrdiff_t availableStackSpace = getAvailableStackSpace();		
 		if(availableStackSpace < 0 || dataSize >= static_cast<size_t>(availableStackSpace))
@@ -106,7 +98,7 @@ public:
 		// Used by checksum and savedChecksum
 		constexpr size_t usedSpace = sizeof(uint32_t) * 2;
 		
-		const size_t dataSize = static_cast<size_t>(Eeprom::read(DataSizeAddress));
+		const size_t dataSize = static_cast<size_t>(Eeprom::read<uint16_t>(DataSizeStart));
 		
 		const ptrdiff_t availableStackSpace = getAvailableStackSpace();
 		if(availableStackSpace < 0 || dataSize >= static_cast<size_t>(availableStackSpace - usedSpace))
@@ -116,7 +108,7 @@ public:
 		Eeprom::read(DataStart, buffer, dataSize);
 
 		const uint32_t checksum = ChecksumType::calculateChecksum(buffer, dataSize);
-		const uint32_t savedChecksum = Eeprom::read(ChecksumAddress);
+		const uint32_t savedChecksum = Eeprom::read<uint32_t>(ChecksumStart);
 
 		return (savedChecksum == checksum);
 	}
@@ -124,12 +116,12 @@ public:
 	// Load the data
 	static DataType loadData()
 	{
-		const uint16_t dataSize = Eeprom::read(DataSizeAddress);
+		const size_t dataSize = static_cast<size_t>(Eeprom::read<uint16_t>(DataSizeStart));
 		const size_t limit = (dataSize < DataSize) ? dataSize : DataSize;
 
 		DataType data;
 		char * dataBuffer = reinterpret_cast<char *>(&data);
-		Eeprom::read(reinterpret_cast<const char *>(DataAddress), dataBuffer, limit);
+		Eeprom::read<char>(DataStart, dataBuffer, limit);
 		return data;
 	}
 
@@ -137,13 +129,13 @@ public:
 	// using the data size from the save file
 	static void saveData(const DataType & data)
 	{
-		Eeprom::update(DataAddress, data);
+		Eeprom::update(DataStart, data);
 
-		uint16_t dataSize = Eeprom::read(DataSizeAddress);
+		size_t dataSize = static_cast<size_t>(Eeprom::read<uint16_t>(DataSizeStart));
 		if(dataSize < DataSize)
 		{
 			dataSize = DataSize;
-			Eeprom::update(DataSizeAddress, DataSize);
+			Eeprom::update(DataSizeStart, DataSize);
 		}
 
 		// Used by checksum
@@ -158,6 +150,6 @@ public:
 
 		const uint32_t checksum = ChecksumType::calculateChecksum(buffer, dataSize);
 
-		Eeprom::update(ChecksumAddress, checksum);
+		Eeprom::update(ChecksumStart, checksum);
 	}
 };
