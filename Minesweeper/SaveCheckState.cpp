@@ -22,7 +22,7 @@
 
 void SaveCheckState::activate(StateMachine & machine)
 {
-	if (Context::SaveData::verifyChecksum())
+	if (Context::SaveData::verifyChecksum(Arduboy2Base::sBuffer))
 	{
 		Context::stats = Context::SaveData::loadData();
 		if(Context::stats.themeIndex > Context::LastThemeIndex)

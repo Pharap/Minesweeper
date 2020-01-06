@@ -78,39 +78,68 @@ public:
 	}
 
 	// Calculate the checksum from the data in EEPROM
-	static uint32_t calculateChecksum()
+	static uint32_t calculateChecksum(char * buffer, size_t size)
 	{
 		const size_t dataSize = static_cast<size_t>(Eeprom::read<uint16_t>(DataSizeStart));
-		
-		const ptrdiff_t availableStackSpace = getAvailableStackSpace();		
-		if(availableStackSpace < 0 || dataSize >= static_cast<size_t>(availableStackSpace))
+
+		if(size < dataSize)
 			return 0;
 
-		char buffer[dataSize];
 		Eeprom::read(DataStart, buffer, dataSize);
 
 		return ChecksumType::calculateChecksum(buffer, dataSize);
 	}
 
-	// Verify the file checksum
-	static bool verifyChecksum()
+	template< size_t size >
+	static uint32_t calculateChecksum(char (&buffer)[size])
 	{
-		// Used by checksum and savedChecksum
-		constexpr size_t usedSpace = sizeof(uint32_t) * 2;
-		
+		return calculateChecksum(buffer, size);
+	}
+
+	template< size_t size >
+	static uint32_t calculateChecksum(unsigned char (&buffer)[size])
+	{
+		return calculateChecksum(reinterpret_cast<char *>(buffer), size);
+	}
+
+	template< size_t size >
+	static uint32_t calculateChecksum(signed char (&buffer)[size])
+	{
+		return calculateChecksum(reinterpret_cast<char *>(buffer), size);
+	}
+
+	// Verify the file checksum
+	static bool verifyChecksum(char * buffer, size_t size)
+	{
 		const size_t dataSize = static_cast<size_t>(Eeprom::read<uint16_t>(DataSizeStart));
-		
-		const ptrdiff_t availableStackSpace = getAvailableStackSpace();
-		if(availableStackSpace < 0 || dataSize >= static_cast<size_t>(availableStackSpace - usedSpace))
+
+		if(size < dataSize)
 			return false;
 
-		char buffer[dataSize];
 		Eeprom::read(DataStart, buffer, dataSize);
 
 		const uint32_t checksum = ChecksumType::calculateChecksum(buffer, dataSize);
 		const uint32_t savedChecksum = Eeprom::read<uint32_t>(ChecksumStart);
 
 		return (savedChecksum == checksum);
+	}
+
+	template< size_t size >
+	static bool verifyChecksum(char (&buffer)[size])
+	{
+		return verifyChecksum(buffer, size);
+	}
+
+	template< size_t size >
+	static bool verifyChecksum(unsigned char (&buffer)[size])
+	{
+		return verifyChecksum(reinterpret_cast<char *>(buffer), size);
+	}
+
+	template< size_t size >
+	static bool verifyChecksum(signed char (&buffer)[size])
+	{
+		return verifyChecksum(reinterpret_cast<char *>(buffer), size);
 	}
 
 	// Load the data
@@ -127,7 +156,7 @@ public:
 
 	// Save the data block and update the checksum
 	// using the data size from the save file
-	static void saveData(const DataType & data)
+	static void saveData(const DataType & data, char * buffer, size_t size)
 	{
 		Eeprom::update(DataStart, data);
 
@@ -138,18 +167,31 @@ public:
 			Eeprom::update(DataSizeStart, DataSize);
 		}
 
-		// Used by checksum
-		constexpr size_t usedSpace = sizeof(uint32_t);
-		
-		const ptrdiff_t availableStackSpace = getAvailableStackSpace();
-		if(availableStackSpace < 0 || dataSize >= static_cast<size_t>(availableStackSpace - usedSpace))
+		if(size < dataSize)
 			return;
 
-		char buffer[dataSize];
 		Eeprom::read(DataStart, buffer, dataSize);
 
 		const uint32_t checksum = ChecksumType::calculateChecksum(buffer, dataSize);
 
 		Eeprom::update(ChecksumStart, checksum);
+	}
+
+	template< size_t size >
+	static void saveData(const DataType & data, char (&buffer)[size])
+	{
+		saveData(data, buffer, size);
+	}
+
+	template< size_t size >
+	static void saveData(const DataType & data, signed char (&buffer)[size])
+	{
+		saveData(data, reinterpret_cast<char *>(buffer), size);
+	}
+
+	template< size_t size >
+	static void saveData(const DataType & data, unsigned char (&buffer)[size])
+	{
+		saveData(data, reinterpret_cast<char *>(buffer), size);
 	}
 };
