@@ -22,17 +22,17 @@
 
 using FlashString = const __FlashStringHelper *;
 
-constexpr inline FlashString AsFlashString(const char * flashString)
+const inline FlashString AsFlashString(const char * flashString)
 {
 	return reinterpret_cast<FlashString>(flashString);
 }
 
-constexpr inline FlashString AsFlashString(const unsigned char * flashString)
+const inline FlashString AsFlashString(const unsigned char * flashString)
 {
 	return reinterpret_cast<FlashString>(flashString);
 }
 
-constexpr inline FlashString AsFlashString(const signed char * flashString)
+const inline FlashString AsFlashString(const signed char * flashString)
 {
 	return reinterpret_cast<FlashString>(flashString);
 }
