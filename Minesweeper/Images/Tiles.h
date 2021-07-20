@@ -17,8 +17,8 @@
 //
 
 //
-// Tiles created by Pharap (https://github.com/Pharap)
-// Penguin tile created by Vampirics (https://github.com/vampirics)
+// Number tiles, Classic and Modern Mine tiles created by Pharap (https://github.com/Pharap)
+// Cactus, Penguin, and Turtle Mine tiles created by Vampirics (https://github.com/vampirics)
 //
 
 namespace Images
