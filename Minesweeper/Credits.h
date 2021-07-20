@@ -18,29 +18,29 @@
 
 namespace Strings
 {
-	const char Programmer0[] PROGMEM = "Pharap";
+	constexpr char Programmer0[] PROGMEM = "Pharap";
 
-	const char * const Programmers[] PROGMEM =
+	constexpr const char * Programmers[] PROGMEM
 	{
-		Programmer0
+		Programmer0,
 	};
 	
-	const char Artist0[] PROGMEM = "Vampirics";
+	constexpr char Artist0[] PROGMEM = "Vampirics";
 	constexpr const char * Artist1 = Programmer0;
 
-	const char * const Artists[] PROGMEM =
+	constexpr const char * Artists[] PROGMEM
 	{
 		Artist0,
-		Artist1
+		Artist1,
 	};
 
-	const char Tester0[] PROGMEM = "Noel Abercrombie";
-	const char Tester1[] PROGMEM = "Filmote";
+	constexpr char Tester0[] PROGMEM = "Noel Abercrombie";
+	constexpr char Tester1[] PROGMEM = "Filmote";
 
-	const char * const Testers[] PROGMEM =
+	constexpr const char * Testers[] PROGMEM
 	{
 		Tester0,
-		Tester1
+		Tester1,
 	};
 }
 
