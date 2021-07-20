@@ -29,7 +29,7 @@ namespace location \
 } \
 }
 
-#define STRING(name, value) const char name [] PROGMEM = value ;
+#define STRING(name, value) constexpr char name [] PROGMEM = value;
 
 // Titlescreen
 #define STRING_PLAY(text) STRING(Play, text)
@@ -70,7 +70,7 @@ namespace location \
 // Translators
 #define STRING_TRANSLATOR(index, name) STRING( Translator##index, name)
 #define BEGIN_TRANSLATORS \
-	const char * const Translators[] PROGMEM = \
+	constexpr const char * Translators[] PROGMEM \
 	{
 #define TRANSLATOR(index) Translator##index,
 #define END_TRANSLATORS };
@@ -142,11 +142,11 @@ namespace Strings
 		#warning "No language defined, defaulting to EN-GB."
 	#endif
 
-	const char ColonSpace[] PROGMEM = ": ";
-	const char Selected[] PROGMEM = "> ";
-	const char NotSelected[] PROGMEM = "  ";
+	constexpr char ColonSpace[] PROGMEM = ": ";
+	constexpr char Selected[] PROGMEM = "> ";
+	constexpr char NotSelected[] PROGMEM = "  ";
 
-	char const * const ThemeNames[] PROGMEM =
+	constexpr const char * ThemeNames[] PROGMEM
 	{
 		Sea,
 		Land,
