@@ -26,7 +26,7 @@ namespace Strings
 	};
 	
 	const char Artist0[] PROGMEM = "Vampirics";
-	constexpr const char * Artist1 = Programmer0;
+	constexpr char * Artist1 = Programmer0;
 
 	const char * const Artists[] PROGMEM =
 	{

@@ -20,7 +20,7 @@ template< typename T, uint8_t Capacity >
 class Stack
 {
 private:
-	static constexpr const uint8_t capacity = Capacity;
+	static constexpr uint8_t capacity = Capacity;
 
 private:
 	T items[capacity];
