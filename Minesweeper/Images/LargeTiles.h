@@ -16,6 +16,9 @@
 // limitations under the License.
 //
 
+// For uint8_t
+#include <stdint.h>
+
 //
 // Number tiles, Classic and Modern Mine tiles created by Pharap (https://github.com/Pharap)
 // Cactus, Penguin, and Turtle Mine tiles created by Vampirics (https://github.com/vampirics)
@@ -26,7 +29,7 @@ namespace Images
 	constexpr uint8_t LargeTileFrameWidth = 16;
 	constexpr uint8_t LargeTileFrameHeight = 16;
 
-	const unsigned char LargeTiles[] PROGMEM =
+	constexpr uint8_t LargeTiles[] PROGMEM
 	{
 		LargeTileFrameWidth, LargeTileFrameHeight,
 

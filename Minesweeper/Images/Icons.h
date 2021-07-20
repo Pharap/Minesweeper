@@ -16,6 +16,9 @@
 // limitations under the License.
 //
 
+// For uint8_t
+#include <stdint.h>
+
 //
 // Icons created by Vampirics (https://github.com/vampirics)
 //
@@ -25,7 +28,7 @@ namespace Images
 	constexpr uint8_t IconWidth = 28;
 	constexpr uint8_t IconHeight = 28;
 
-	uint8_t const Icons[] PROGMEM =
+	constexpr uint8_t Icons[] PROGMEM
 	{
 		// Dimensions
 		IconWidth, IconHeight,
