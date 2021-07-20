@@ -1,7 +1,7 @@
 #include "SplashscreenState.h"
 
 //
-// Copyright (C) 2018 Pharap (@Pharap)
+// Copyright (C) 2018-2021 Pharap (@Pharap)
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
