@@ -16,6 +16,9 @@
 // limitations under the License.
 //
 
+// For uint8_t
+#include <stdint.h>
+
 //
 // Background graphics created by Vampirics (https://github.com/vampirics)
 //
@@ -25,7 +28,7 @@ namespace Images
 	constexpr uint8_t BackgroundLeftWidth = 31;
 	constexpr uint8_t BackgroundLeftHeight = 64;
 
-	uint8_t const BackgroundLeft[] PROGMEM =
+	constexpr uint8_t BackgroundLeft[] PROGMEM
 	{
 		// Dimensions
 		BackgroundLeftWidth, BackgroundLeftHeight,
@@ -84,7 +87,7 @@ namespace Images
 	constexpr uint8_t BackgroundRightWidth = 31;
 	constexpr uint8_t BackgroundRightHeight = 64;
 
-	uint8_t const BackgroundRight[] PROGMEM =
+	constexpr uint8_t BackgroundRight[] PROGMEM
 	{
 		// Dimensions
 		BackgroundRightWidth, BackgroundRightHeight,
