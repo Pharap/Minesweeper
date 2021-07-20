@@ -30,9 +30,9 @@ const TitleScreenState::Option TitleScreenState::Options[] PROGMEM =
 
 void TitleScreenState::update(StateMachine & machine)
 {
-	static constexpr uint8_t MinOption = 0;
-	static constexpr uint8_t OptionCount = ArrayLength(Options);
-	static constexpr uint8_t MaxOption = (MinOption + OptionCount) - 1;
+	constexpr uint8_t MinOption = 0;
+	constexpr uint8_t OptionCount = ArrayLength(Options);
+	constexpr uint8_t MaxOption = (MinOption + OptionCount) - 1;
 
 	auto & arduboy = machine.getContext().arduboy;
 	
@@ -76,8 +76,8 @@ void TitleScreenState::render(StateMachine & machine)
 		constexpr uint8_t x = CalculateCentreX(maxWidth);
 		constexpr uint8_t yBase = Images::TitleHeight + 4;
 
-		static constexpr uint8_t MinOption = 0;
-		static constexpr uint8_t OptionCount = ArrayLength(Options);
+		constexpr uint8_t MinOption = 0;
+		constexpr uint8_t OptionCount = ArrayLength(Options);
 
 		uint8_t y = yBase;
 

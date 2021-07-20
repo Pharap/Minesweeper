@@ -29,9 +29,9 @@ enum class ConfirmationOption : uint8_t
 class ConfirmationMenu
 {
 private:
-	static constexpr const uint16_t selectionWidth = MaxValue<uint8_t, StringWidth(Strings::Selected), StringWidth(Strings::NotSelected)>();
-	static constexpr const uint16_t confirmationWidth = MaxValue<uint8_t, StringWidth(Strings::Yes), StringWidth(Strings::No)>();
-	static constexpr const uint8_t defaultWidth = (selectionWidth + confirmationWidth);
+	static constexpr uint16_t selectionWidth = MaxValue<uint8_t, StringWidth(Strings::Selected), StringWidth(Strings::NotSelected)>();
+	static constexpr uint16_t confirmationWidth = MaxValue<uint8_t, StringWidth(Strings::Yes), StringWidth(Strings::No)>();
+	static constexpr uint8_t defaultWidth = (selectionWidth + confirmationWidth);
 
 private:
 	uint8_t optionIndex = 1;

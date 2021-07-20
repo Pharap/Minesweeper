@@ -24,10 +24,10 @@
 class SplashScreenState : public GameState<GameContext, GameStateType>
 {
 private:
-	static constexpr const uint8_t BlinkDelayDefault = 2;
-	static constexpr const uint8_t BlinkDelayVariance = 5;
-	static constexpr const uint8_t BlinkTickMin = 0;
-	static constexpr const uint8_t BlinkTickMax = 7;
+	static constexpr uint8_t BlinkDelayDefault = 2;
+	static constexpr uint8_t BlinkDelayVariance = 5;
+	static constexpr uint8_t BlinkTickMin = 0;
+	static constexpr uint8_t BlinkTickMax = 7;
 
 private:
 	bool blinkInvert;

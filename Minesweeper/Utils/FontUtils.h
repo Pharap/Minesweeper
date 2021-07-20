@@ -20,11 +20,11 @@
 #include "FlashString.h"
 #include <avr/pgmspace.h>
 
-static constexpr uint8_t FontCharWidth = 5;
-static constexpr uint8_t FontCharHeight = 7;
-static constexpr uint8_t FontSpaceWidth = 1;
-static constexpr uint8_t FontSpaceHeight = 1;
-static constexpr uint8_t FontLineHeight = FontCharHeight + FontSpaceHeight;
+constexpr uint8_t FontCharWidth = 5;
+constexpr uint8_t FontCharHeight = 7;
+constexpr uint8_t FontSpaceWidth = 1;
+constexpr uint8_t FontSpaceHeight = 1;
+constexpr uint8_t FontLineHeight = FontCharHeight + FontSpaceHeight;
 
 constexpr inline uint8_t StringWidth(const uint8_t & charCount)
 {

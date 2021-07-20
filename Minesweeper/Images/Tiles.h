@@ -23,8 +23,8 @@
 
 namespace Images
 {
-	static constexpr uint8_t TileFrameWidth = 8;
-	static constexpr uint8_t TileFrameHeight = 8;
+	constexpr uint8_t TileFrameWidth = 8;
+	constexpr uint8_t TileFrameHeight = 8;
 
 	const unsigned char Tiles[] PROGMEM =
 	{
